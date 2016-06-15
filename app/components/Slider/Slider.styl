@@ -1,0 +1,56 @@
+
+@import '../../style/variables';
+@import '../../style/mixins';
+
+sliderHeight = _margin*0.5;
+
+.Slider {
+  centerY();
+  position: fixed;
+  right: _margin*2;
+
+
+  &-point {
+    position: relative;
+    margin: _margin;
+
+    &:after {
+      content: '';
+      display: block;
+      border: 3px solid fontColorSecondary;
+      circle(sliderHeight);
+      position: absolute;
+      top: _margin;
+      right: -(sliderHeight/2);
+      transition: 0.4s;
+    }
+
+    &:hover {
+
+      &:after {
+        background-color: fontColorSecondary;
+      }
+
+      .Slider-name {
+        width: 200px;
+        opacity: 1;
+        text-indent: 0;
+
+      }
+    }
+  }
+
+  &-name {
+    display: block;
+    opacity: 0;
+    padding-bottom: (_margin/2);
+    text-indent: _margin;
+    text-transform: uppercase;
+    font-style: italic;
+    font-size: 0.8em;
+
+    width: 190px;
+    border-bottom: 2px solid fontColorSecondary;
+    transition: 0.4s;
+  }
+}

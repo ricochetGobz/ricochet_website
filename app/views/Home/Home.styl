@@ -3,5 +3,22 @@
 @import '../../style/mixins';
 
 .Home {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow-x: auto;
 
+  &-content {
+    position: absolute;
+  }
+
+  &-section {
+    position: relative;
+    width: 80%;
+    max-width: 1366px;
+    height: 90%;
+    margin: 4% auto;
+  }
 }

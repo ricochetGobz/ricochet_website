@@ -1,0 +1,55 @@
+
+@import '../../style/variables';
+@import '../../style/mixins';
+
+.Person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-image {
+    position: relative;
+    width: _margin*8;
+    height: _margin*32;
+    border-radius: _margin*4;
+    transform: rotate(45deg) translate(_margin*8, -(_margin*3));
+    margin-bottom: _margin*4;
+    transition: 0.4s;
+
+    &:hover {
+      background-color: overlayColor_dark;
+
+      .Person-job {
+        bottom: _margin*5;
+        opacity: 1;
+      }
+    }
+  }
+
+  &-job {
+    width: 0;
+    display: block;
+    position: absolute;
+    transform: rotate(-90deg);
+    font-size: 1em;
+    letter-spacing: 0.4em;
+    right: 2em;
+    bottom: 0;
+    line-height: 0;
+    transition: 0.4s;
+    opacity: 0;
+    text-transform: uppercase;
+    color: shadowColor;
+  }
+
+  &-firstname, &-lastname {
+    width: 50%;
+    text-transform: uppercase;
+    color: fontColorSecondary;
+  }
+
+  &-lastname {
+    color: fontColor;
+    margin-left: _margin * 3;
+  }
+}

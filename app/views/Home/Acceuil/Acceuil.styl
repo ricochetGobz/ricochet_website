@@ -1,0 +1,61 @@
+
+@import '../../../style/variables';
+@import '../../../style/mixins';
+
+.Acceuil {
+  // LOGO
+  &-logo {
+    center();
+    width: 50%;
+    max-width: 800px;
+  }
+
+  // SCROLL
+  &-scrollIndicator {
+    centerX();
+    bottom: 0;
+    text-align: center;
+    text-transform: uppercase;
+    color: fontColorSecondary;
+    font-style: italic;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &-mouse {
+    position: relative;
+    border: 3px solid fontColor;
+    width: _margin;
+    height: _margin*2;
+    border-radius: _margin;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 7px;
+      left: 7px;
+
+      width: 3px;
+      height: (_margin/2);
+      background-color: fontColor;
+    }
+
+  }
+
+  &-arrowDown{
+    arrowDown(_margin/2, fontColorSecondary);
+    animation: scrollDown 0.7s infinite alternate;
+  }
+}
+
+@keyframes scrollDown {
+  from {
+    margin-top: _margin*0.5;
+    margin-bottom: _margin*1.2;
+  }
+  to {
+    margin-top: _margin*1.2;
+    margin-bottom: _margin*0.5;
+  }
+}

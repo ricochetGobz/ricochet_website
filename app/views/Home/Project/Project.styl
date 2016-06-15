@@ -1,0 +1,36 @@
+
+@import '../../../style/variables';
+@import '../../../style/mixins';
+
+.Project {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  &-column {
+    width: 45%;
+  }
+
+  &-title {
+
+    span:first-child {
+      color: fontColor;
+      font-size: 0.35em;
+      letter-spacing: 5px;
+    }
+  }
+
+  &-subtitle {
+    margin: _margin*3 0;
+    color: fontColorSecondary;
+    font-style: italic;
+    font-size: 1.5em;
+    font-weight: lighter;
+
+  }
+
+  &-paragraph {
+    width: 90%;
+  }
+}

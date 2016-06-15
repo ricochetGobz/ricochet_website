@@ -79,3 +79,37 @@ circle(d) {
   height: d;
   border-radius: d;
 }
+
+// ARROW
+
+arrowUp(size, color) {
+  width: 0;
+  height: 0;
+  border-left: size solid transparent;
+  border-right: size solid transparent;
+  border-bottom: size solid color;
+}
+
+arrowDown(size, color) {
+  width: 0;
+  height: 0;
+  border-left: size solid transparent;
+  border-right: size solid transparent;
+  border-top: size solid color;
+}
+
+arrowRight(size, color) {
+  width: 0;
+  height: 0;
+  border-top: size solid transparent;
+  border-bottom: size solid transparent;
+  border-left: size solid color;
+}
+
+arrowLeft(size, color) {
+  width: 0;
+  height: 0;
+  border-top: size solid transparent;
+  border-bottom: size solid transparent;
+  border-right: size solid color;
+}
