@@ -43,9 +43,18 @@ h3 {
   color: fontColorSecondary;
 }
 
+a {
+    text-decoration: none;
+    color: fontColor;
+}
+
 p {
   font-size: 0.7em;
   letter-spacing: 0.15em;
+}
+
+li {
+  list-style-type: none;
 }
 
 strong {
@@ -71,7 +80,7 @@ button, input {
 
 ._wrapper {
   position: relative;
-  padding: _margin*3 _margin*4;
+  padding: (navbarHeight+(_margin*3)) _margin*4;
 
   +mobile() {
     padding: _margin;

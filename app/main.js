@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 
 import Root from './router';
 
-import utils from './core/utils';
-
 import './style/fonts.styl';
 import './style/base.styl';
 

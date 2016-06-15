@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import utils from '../../core/utils';
-
 
 export default class Layout extends Component {
   constructor(props) {

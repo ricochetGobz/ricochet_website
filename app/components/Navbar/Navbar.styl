@@ -3,16 +3,46 @@
 
 .Navbar {
   position: fixed;
+  //height: navbarHeight - _margin*6;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
   background-color: backgroundColor;
+  border-bottom: 1px solid lineColor;
+  display: flex;
+  align-items: center;
+  padding: _margin * 4;
+  justify-content: space-between;
+  z-index: 9;
 
   &-link {
+    position: relative;
+    text-transform: uppercase;
 
+    &_right {
+      float: right;
+    }
+
+    &:after {
+      position: absolute;
+      top: -(_margin);
+      left: -(_margin);
+      display: block;
+      content: '';
+      width: 0;
+      height: (_margin/3);
+      background-color: markColor;
+      transition: 0.2s;
+      opacity: 0;
+    }
 
     &:hover, &:active {
-      // TODO mettre le truc rouge la haut.
+      color: fontColor;
+
+      &:after {
+        width: _margin * 2;
+        opacity: 1;
+      }
     }
 
   }
