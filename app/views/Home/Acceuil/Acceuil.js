@@ -12,16 +12,40 @@ export default class Acceuil extends Component {
   }
 
   componentDidMount() {
+    this._checkStatus();
+  }
 
+  componentDidUpdate() {
+    this._checkStatus();
+  }
+
+  _checkStatus() {
+    if (this.props.openned !== this._openned) {
+      if (this.props.openned) {
+        this._open();
+      } else {
+        this._close();
+      }
+      this._openned = this.props.openned;
+    }
+  }
+
+  _open() {
+    console.log("open Acceuil");
+  }
+
+  _close() {
+    console.log("close Acceuil");
+    this.props.changeView();
   }
 
   render() {
     return (
-      <section className="Home-section Acceuil">
+      <section className="Home-section Acceuil" style={this.props.style}>
           <div className="Acceuil-logo">
             <Logo />
           </div>
-          <div className="Acceuil-scrollIndicator">
+          <div ref="scrollIndicator" className="Acceuil-scrollIndicator">
             <div className="Acceuil-mouse"></div>
             <div className="Acceuil-arrowDown"></div>
             <p>scroll <br /> pour naviguer</p>
@@ -30,3 +54,9 @@ export default class Acceuil extends Component {
     );
   }
 }
+
+Acceuil.propTypes = {
+  style: React.PropTypes.object,
+  openned: React.PropTypes.bool,
+  changeView: React.PropTypes.func,
+};

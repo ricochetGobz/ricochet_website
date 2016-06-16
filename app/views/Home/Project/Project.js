@@ -5,19 +5,43 @@ import Cube from '../../../components/Cube/Cube';
 import './Project.styl';
 
 
-export default class Layout extends Component {
+export default class Project extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
   componentDidMount() {
+    this._checkStatus();
+  }
 
+  componentDidUpdate() {
+    this._checkStatus();
+  }
+
+  _checkStatus() {
+    if (this.props.openned !== this._openned) {
+      if (this.props.openned) {
+        this._open();
+      } else {
+        this._close();
+      }
+      this._openned = this.props.openned;
+    }
+  }
+
+  _open() {
+    console.log("open Project");
+  }
+
+  _close() {
+    console.log("close Project");
+    this.props.changeView();
   }
 
   render() {
     return (
-      <section className="Home-section Project">
+      <section className="Home-section Project" style={this.props.style}>
         <div className="Project-column">
           <div className="Project-cube">
             <Cube />
@@ -40,3 +64,9 @@ export default class Layout extends Component {
     );
   }
 }
+
+Project.propTypes = {
+  style: React.PropTypes.object,
+  openned: React.PropTypes.bool,
+  changeView: React.PropTypes.func,
+};

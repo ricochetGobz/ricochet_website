@@ -13,6 +13,7 @@ sliderHeight = _margin*0.5;
   &-point {
     position: relative;
     margin: _margin;
+    cursor: pointer;
 
     &:after {
       content: '';
@@ -25,7 +26,7 @@ sliderHeight = _margin*0.5;
       transition: 0.4s;
     }
 
-    &:hover {
+    &:hover, &_active {
 
       &:after {
         background-color: fontColorSecondary;
