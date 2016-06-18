@@ -15,6 +15,8 @@ const PROJECT = 1;
 const VIDEOS = 2;
 const TEAM = 3;
 
+const MARGIN_TOP = 160;
+const MARGIN_BOTTOM = 64;
 
 export default class Layout extends Component {
   constructor(props) {
@@ -42,17 +44,14 @@ export default class Layout extends Component {
 
     // Get height view
     this._resizeView();
-    document.addEventListener('resize', this._resizeView);
+    window.addEventListener('resize', this._resizeView);
   }
 
   _resizeView() {
-    const marginTop = 160;
-    const marginBottom = 64;
-    this.setState({ height: window.innerHeight, style: {
-      height: `${window.innerHeight - marginTop - marginBottom}px`,
-      margin: `${marginTop}px auto ${marginBottom}px auto`,
-    },
-    });
+    const margin = `${MARGIN_TOP}px auto ${MARGIN_BOTTOM}px auto`;
+    const height = `${window.innerHeight - MARGIN_TOP - MARGIN_BOTTOM}px`;
+    this.refs.homeWrapper.style.marginTop = `${-this.state.currentView * window.innerHeight}px`;
+    this.setState({ height: window.innerHeight, style: { height, margin } });
   }
 
   _onScroll(e) {
