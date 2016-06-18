@@ -3,11 +3,21 @@
 @import '../../../style/mixins';
 
 .Team {
+  transform: translate(-(cos(capsuleRotation)*(capsuleHeight))+(cos(capsuleRotation)*(capsuleWidth)), 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &-title {
+    width: 50%;
+  }
 
   &-persons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: -(_margin*4);
+    margin-left: 5%;
   }
 
   &-person {
