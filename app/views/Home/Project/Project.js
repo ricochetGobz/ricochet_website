@@ -106,8 +106,8 @@ export default class Project extends Component {
           <h2 className="Project-title"><span>le projet</span> <br /> ricochet</h2>
           <p className="Project-subtitle">Une musique insonore</p>
           <p className="Project-paragraph"> Nous n’avons pas pour objectif de faire
-            à nouveau entendre les personnes sourdes/malentendants,
-            de leurs faire retrouver l’ouïe, de retrouver un sens perdu.
+            à nouveau entendre les personnes sourdes/malentendantes,
+            de leur faire retrouver l’ouïe, de retrouver un sens perdu.
             <br /> <br />
             Notre projet, au contraire souhaite s’appuyer sur tout les autres
             sens et sur un dispositif collaboratif afin de faire découvrir
