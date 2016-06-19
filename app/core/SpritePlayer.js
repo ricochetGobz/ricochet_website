@@ -39,6 +39,8 @@ export default class SpritePlayer {
       this._callback = object.onComplete || false;
       this._endKey = object.stopAt || this._endKey;
     }
+
+    if (this._currentKey === this._spriteFrames.length - 1) this._currentKey = 0;
     this._loop(this._play);
   }
   _play() {

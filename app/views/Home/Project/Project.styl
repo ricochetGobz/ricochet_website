@@ -9,8 +9,17 @@
   justify-content: space-between;
 
   &-column {
-    width: 45%;
+    position: relative;
+
+    &_left {
+      width: 20%;
+    }
+
+    &_right {
+      width: 70%;
+    }
   }
+
 
   &-title {
 
@@ -35,5 +44,11 @@
 
   &-cube {
     position: relative;
+    opacity: 0.9;
+  }
+
+  &-notes {
+    center();
+    width: 450px;
   }
 }
