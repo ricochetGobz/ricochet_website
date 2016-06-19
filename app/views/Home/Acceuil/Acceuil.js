@@ -22,10 +22,12 @@ export default class Acceuil extends Component {
 
   componentDidMount() {
     this._checkStatus();
+    console.log(this.refs.logo.offsetWidth);
   }
 
   componentDidUpdate() {
     this._checkStatus();
+    console.log(this.refs.logo.offsetWidth);
   }
 
   _checkStatus() {
@@ -60,8 +62,9 @@ export default class Acceuil extends Component {
   render() {
     return (
       <section className="Home-section Acceuil" style={this.props.style}>
-          <div className="Acceuil-logo">
+          <div ref="logo" className="Acceuil-logo">
             <Logo
+              width={this.refs.logo}
               showLogo={this.props.openned}
               onAnimComplete={this._onLogoAnimComplete}
             />

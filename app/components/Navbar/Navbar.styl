@@ -2,25 +2,32 @@
 @import '../../style/mixins';
 
 .Navbar {
-  position: fixed;
-  //height: navbarHeight - _margin*6;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
+  //height: navbarHeight - _margin*6;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: _margin * 3;
   background-color: backgroundColor;
   border-bottom: 1px solid lineColor;
-  display: flex;
-  align-items: center;
-  padding: _margin * 4;
-  justify-content: space-between;
   z-index: 9;
 
   &-link {
     position: relative;
+    width: 200px;
     text-transform: uppercase;
 
     &_right {
-      float: right;
+      align-self: flex-end;
+      order: 1;
+    }
+
+    &_hidden {
+      pointer-events: none;
+      opacity: 0.4;
     }
 
     &:after {

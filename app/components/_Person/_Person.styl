@@ -14,7 +14,7 @@
     border-radius: capsuleWidth * 0.5;
     transform-origin: bottom left;
     transform: rotate(capsuleRotation);
-    margin-bottom: _margin*6;
+    margin-bottom: _margin * 5;
     overflow: hidden;
     cursor: pointer;
 
@@ -33,11 +33,21 @@
     &:hover {
 
       &:after {
-        background-color: overlayColor_dark;
+        background-color:  overlayColor_dark;
       }
 
       .Person-job {
         bottom: _margin*5;
+        opacity: 1;
+      }
+
+      & ~ .Person-firstname {
+        margin-left: _margin * 4;
+        opacity: 1;
+      }
+
+      & ~ .Person-lastname {
+        margin-left: _margin * 6;
         opacity: 1;
       }
     }
@@ -75,6 +85,8 @@
     width: 50%;
     text-transform: uppercase;
     color: fontColorSecondary;
+    opacity: 0;
+    transition: 0.4s;
   }
 
   &-lastname {

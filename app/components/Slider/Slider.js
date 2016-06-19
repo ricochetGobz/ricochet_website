@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Point from '../_Point/_Point';
 import './Slider.styl';
 
 const ACCEUIL = 0;
@@ -35,40 +36,26 @@ export default class Slider extends Component {
   }
 
   render() {
-    // TODO crée un component Point.
     // TODO récupérer un array des view
     return (
       <section className="Slider">
-        <li
-          className={`Slider-point ${(this._isActive(ACCEUIL)) ? 'Slider-point_active' : ''}`}
-          onClick={() => this._selectView(ACCEUIL)}
-        >
-          <span className="Slider-name">Acceuil</span>
-        </li>
-        <li
-          className={`Slider-point ${(this._isActive(PROJECT)) ? 'Slider-point_active' : ''}`}
-          onClick={() => this._selectView(PROJECT)}
-        >
-          <span className="Slider-name">Projet</span>
-        </li>
-        <li
-          className={`Slider-point ${(this._isActive(VIDEOS)) ? 'Slider-point_active' : ''}`}
-          onClick={() => this._selectView(VIDEOS)}
-        >
-          <span className="Slider-name">Videos</span>
-        </li>
-        <li
-          className={`Slider-point ${(this._isActive(TEAM)) ? 'Slider-point_active' : ''}`}
-          onClick={() => this._selectView(TEAM)}
-        >
-          <span className="Slider-name">Equipe</span>
-        </li>
+        {
+          this.props.views.map((view) =>
+            <Point
+              viewId={view.id}
+              viewName={view.name}
+              selectView={this._selectView}
+              isActive={this._isActive(view.id)}
+            />
+          )
+        }
       </section>
     );
   }
 }
 
 Slider.propTypes = {
+  views: React.PropTypes.object,
   currentView: React.PropTypes.number,
   selectView: React.PropTypes.func,
 };

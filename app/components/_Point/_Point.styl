@@ -1,0 +1,82 @@
+@import '../../style/variables';
+@import '../../style/mixins';
+
+pointSize = _margin * 0.45;
+echoSize = _margin * 4.4;
+echoSize2 = _margin * 2.6;
+
+.Point {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  margin: _margin * 0.6 0;
+  cursor: pointer;
+
+  &:after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: _margin - 3px; // - border - lineheight
+    right: -(pointSize * 0.5);
+    circle(pointSize);
+    border: 2px solid fontColorSecondary;
+    transition: 0.4s;
+  }
+
+  &:hover, &_active {
+
+    &:after {
+      background-color: fontColorSecondary;
+    }
+
+    .Point-name {
+      width: _margin * 11;
+      opacity: 1;
+      text-indent: 0;
+    }
+
+    .Point-circles {
+      right: -(echoSize * 0.5);
+      bottom: -(echoSize * 0.5);
+      circle(echoSize);
+
+      &:after {
+        circle(echoSize2);
+      }
+    }
+  }
+
+  &-name {
+    display: block;
+    opacity: 0;
+    padding-bottom: pointSize;
+    text-indent: _margin * 4;
+    text-transform: uppercase;
+    font-style: italic;
+    font-size: 0.8em;
+
+    width: _margin * 10;
+    border-bottom: 1px solid fontColorSecondary;
+    transition: 0.4s;
+  }
+
+  &-circles {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    circle(0);
+    border: 1px solid lineColor;
+    transition: 0.3s;
+    pointer-events: none;
+
+    &:after {
+      content'';
+      display: block;
+      center();
+      circle(0);
+      border: 1px solid lineColor;
+      transition: 0.2s;
+    }
+  }
+
+}

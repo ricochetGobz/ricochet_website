@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import SpritePlayer from '../../core/SpritePlayer';
 
-
+import './Logo.styl';
 import showLogoSpriteUrl from '../../assets/imgs/sprites/showLogo/showLogo.png';
 import showLogoSpriteJson from '../../assets/imgs/sprites/showLogo/showLogo.json';
 import hideLogoSpriteUrl from '../../assets/imgs/sprites/hideLogo/hideLogo.png';
@@ -72,7 +72,12 @@ export default class Logo extends Component {
   }
 
   render() {
-    return <canvas ref="logo" ></canvas>;
+    return (
+      <div className="Logo">
+        <h1 className="Logo-title">Ricochet</h1>
+        <canvas className="Logo-canvas" ref="logo" ></canvas>
+      </div>
+    );
   }
 }
 

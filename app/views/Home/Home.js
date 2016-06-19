@@ -10,12 +10,8 @@ import Team from './Team/Team';
 
 import './Home.styl';
 
-const ACCEUIL = 0;
-const PROJECT = 1;
-const VIDEOS = 2;
-const TEAM = 3;
 
-const MARGIN_TOP = 160;
+const MARGIN_TOP = 100;
 const MARGIN_BOTTOM = 64;
 
 export default class Layout extends Component {
@@ -23,14 +19,19 @@ export default class Layout extends Component {
     super(props);
 
     this.state = {
-      currentView: ACCEUIL,
+      currentView: 0,
       nextView: -1,
       height: 500,
       style: {
         height: '500px',
         margin: '200px auto',
       },
-      currentPosition: 0,
+      views: [
+        { id: 0, name: 'Acceuil' },
+        { id: 1, name: 'Projet' },
+        // { id: 2, name: 'Vidéos' },
+        { id: 2, name: 'Team' },
+      ],
     };
 
     this._onScroll = this._onScroll.bind(this);
@@ -57,11 +58,11 @@ export default class Layout extends Component {
   _onScroll(e) {
     if (this.state.nextView === -1 && Math.abs(e.deltaY) > 20) {
       if (e.deltaY > 0) {
-        if (this.state.currentView !== ACCEUIL) {
+        if (this.state.currentView !== 0) {
           this._selectView(this.state.currentView - 1);
         }
       } else {
-        if (this.state.currentView !== TEAM) {
+        if (this.state.currentView < this.state.views.length) {
           this._selectView(this.state.currentView + 1);
         }
       }
@@ -82,21 +83,21 @@ export default class Layout extends Component {
       this.setState({ currentView: this.state.nextView, nextView: -1 });
     },
       ease: Power3.easeOut,
-      'margin-top': this.state.currentPosition - (this.state.nextView * this.state.height) }
+      'margin-top': -(this.state.nextView * this.state.height) }
     );
   }
 
   render() {
+    // <Videos style={this.state.style} openned={(this.state.currentView === this.state.views[2].id)} changeView={this._changeView} />
     return (
       <div ref="home" className="Home">
         <div ref="homeWrapper" className="Home-wrapper">
-          <Acceuil style={this.state.style} openned={(this.state.currentView === ACCEUIL)} changeView={this._changeView} />
-          <Project style={this.state.style} openned={(this.state.currentView === PROJECT)} changeView={this._changeView} />
-          <Videos style={this.state.style} openned={(this.state.currentView === VIDEOS)} changeView={this._changeView} />
-          <Team style={this.state.style} openned={(this.state.currentView === TEAM)} changeView={this._changeView} />
+          <Acceuil style={this.state.style} openned={(this.state.currentView === this.state.views[0].id)} changeView={this._changeView} />
+          <Project style={this.state.style} openned={(this.state.currentView === this.state.views[1].id)} changeView={this._changeView} />
+          <Team style={this.state.style} openned={(this.state.currentView === this.state.views[2].id)} changeView={this._changeView} />
         </div>
 
-        <Slider currentView={this.state.currentView} selectView={this._selectView} />
+        <Slider views={this.state.views} currentView={this.state.currentView} selectView={this._selectView} />
       </div>
     );
   }
