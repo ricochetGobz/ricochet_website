@@ -22,7 +22,7 @@ export default class Navbar extends Component {
       <nav className="Navbar">
         <li className="Navbar-link"><Link to="/">le projet</Link></li>
         <li className="Navbar-link Navbar-link_right Navbar-link_hidden"><Link to="/experiment/">L experience</Link></li>
-        <li className="Navbar-link Navbar-link_right Navbar-link_hidden"><Link to="/gallery/">Gallerie</Link></li>
+        <li className="Navbar-link Navbar-link_right Navbar-link_hidden"><Link to="/galery/">Galerie</Link></li>
         <li className="Navbar-link Navbar-link_right Navbar-link_hidden"><Link to="/apropo/">a propos</Link></li>
       </nav>
     );

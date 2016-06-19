@@ -4,10 +4,10 @@ import TweenLite from 'gsap';
 
 import Logo from '../../../components/Logo/Logo';
 
-import './Acceuil.styl';
+import './Accueil.styl';
 
 
-export default class Acceuil extends Component {
+export default class Accueil extends Component {
   constructor(props) {
     super(props);
 
@@ -61,17 +61,17 @@ export default class Acceuil extends Component {
 
   render() {
     return (
-      <section className="Home-section Acceuil" style={this.props.style}>
-          <div ref="logo" className="Acceuil-logo">
+      <section className="Home-section Accueil" style={this.props.style}>
+          <div ref="logo" className="Accueil-logo">
             <Logo
               width={this.refs.logo}
               showLogo={this.props.openned}
               onAnimComplete={this._onLogoAnimComplete}
             />
           </div>
-          <div ref="scrollIndicator" className="Acceuil-scrollIndicator">
-            <div className="Acceuil-mouse"></div>
-            <div className="Acceuil-arrowDown"></div>
+          <div ref="scrollIndicator" className="Accueil-scrollIndicator">
+            <div className="Accueil-mouse"></div>
+            <div className="Accueil-arrowDown"></div>
             <p>scroll <br /> pour naviguer</p>
           </div>
       </section>
@@ -79,7 +79,7 @@ export default class Acceuil extends Component {
   }
 }
 
-Acceuil.propTypes = {
+Accueil.propTypes = {
   style: React.PropTypes.object,
   openned: React.PropTypes.bool,
   changeView: React.PropTypes.func,

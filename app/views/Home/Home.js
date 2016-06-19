@@ -3,7 +3,7 @@ import TweenLite from 'gsap';
 
 import Slider from '../../components/Slider/Slider';
 
-import Acceuil from './Acceuil/Acceuil';
+import Accueil from './Accueil/Accueil';
 import Project from './Project/Project';
 import Videos from './Videos/Videos';
 import Team from './Team/Team';
@@ -27,7 +27,7 @@ export default class Layout extends Component {
         margin: '200px auto',
       },
       views: [
-        { id: 0, name: 'Acceuil' },
+        { id: 0, name: 'Accueil' },
         { id: 1, name: 'Projet' },
         // { id: 2, name: 'Vidéos' },
         { id: 2, name: 'L\'Équipe' },
@@ -92,7 +92,7 @@ export default class Layout extends Component {
     return (
       <div ref="home" className="Home">
         <div ref="homeWrapper" className="Home-wrapper">
-          <Acceuil style={this.state.style} openned={(this.state.currentView === this.state.views[0].id)} changeView={this._changeView} />
+          <Accueil style={this.state.style} openned={(this.state.currentView === this.state.views[0].id)} changeView={this._changeView} />
           <Project style={this.state.style} openned={(this.state.currentView === this.state.views[1].id)} changeView={this._changeView} />
           <Team style={this.state.style} openned={(this.state.currentView === this.state.views[2].id)} changeView={this._changeView} />
         </div>
