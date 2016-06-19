@@ -15,7 +15,10 @@ export default class _Person extends Component {
     return (
       <div className="Person">
         <div className="Person-capsule">
-          <img className="Person-image" src={this.props.image} alt={`${this.props.firstname} ${this.props.lastname}`} />
+          <img className="Person-image"
+            src={this.props.image}
+            alt={`${this.props.firstname} ${this.props.lastname}`}
+          />
           <span className="Person-job">{this.props.job}</span>
         </div>
         <p className="Person-firstname">{this.props.firstname}</p>
