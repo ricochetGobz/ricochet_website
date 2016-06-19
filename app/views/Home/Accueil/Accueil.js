@@ -22,12 +22,10 @@ export default class Accueil extends Component {
 
   componentDidMount() {
     this._checkStatus();
-    console.log(this.refs.logo.offsetWidth);
   }
 
   componentDidUpdate() {
     this._checkStatus();
-    console.log(this.refs.logo.offsetWidth);
   }
 
   _checkStatus() {

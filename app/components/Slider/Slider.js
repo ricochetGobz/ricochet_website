@@ -22,7 +22,6 @@ export default class Slider extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.props.currentView);
     this.viewActive = -1;
   }
 
