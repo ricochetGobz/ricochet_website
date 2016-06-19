@@ -8,7 +8,14 @@ import './Project.styl';
 export default class Project extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+
+    this._rotationStarter = false;
+
+    this.state = {
+      face: -1,
+      startRotation: false,
+      lastFace: 0,
+    };
   }
 
   componentDidMount() {
@@ -17,6 +24,7 @@ export default class Project extends Component {
 
   componentDidUpdate() {
     this._checkStatus();
+    if (this.state.startRotation && !this._rotationStarter) this._startRotation();
   }
 
   _checkStatus() {
@@ -31,12 +39,23 @@ export default class Project extends Component {
   }
 
   _open() {
-    console.log("open Project");
+    console.log('open Project');
+    this.setState({ face: this.state.lastFace, startRotation: true });
   }
 
   _close() {
-    console.log("close Project");
+    console.log('close Project');
+    this.setState({ face: -1, startRotation: false });
     this.props.changeView();
+  }
+
+  _startRotation() {
+    this._rotationStarter = true;
+    setTimeout(() => {
+      this._rotationStarter = false;
+      const newFace = ((this.state.lastFace + 1) % 6);
+      this.setState({ face: newFace, lastFace: newFace });
+    }, 3500);
   }
 
   render() {
@@ -44,7 +63,7 @@ export default class Project extends Component {
       <section className="Home-section Project" style={this.props.style}>
         <div className="Project-column">
           <div className="Project-cube">
-            <Cube />
+            <Cube face={this.state.face} />
           </div>
         </div>
         <div className="Project-column">

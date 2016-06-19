@@ -30,7 +30,7 @@ export default class Layout extends Component {
         { id: 0, name: 'Acceuil' },
         { id: 1, name: 'Projet' },
         // { id: 2, name: 'Vidéos' },
-        { id: 2, name: 'Team' },
+        { id: 2, name: 'L\'Équipe' },
       ],
     };
 
@@ -62,7 +62,7 @@ export default class Layout extends Component {
           this._selectView(this.state.currentView - 1);
         }
       } else {
-        if (this.state.currentView < this.state.views.length) {
+        if (this.state.currentView < this.state.views.length - 1) {
           this._selectView(this.state.currentView + 1);
         }
       }
