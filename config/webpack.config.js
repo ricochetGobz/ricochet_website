@@ -42,7 +42,8 @@ var config = {
         },
         {
           test: /\.json$/,
-          loader: 'json'
+          loader: 'json',
+          include: path.resolve(__dirname, '../app/assets/')
         },
         {
           test: /\.(png|jpe?g|gif|svg)$/,

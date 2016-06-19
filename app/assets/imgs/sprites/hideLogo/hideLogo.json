@@ -1,0 +1,255 @@
+{"frames": [
+
+{
+	"filename": "ricochetLogo_58.png",
+	"frame": {"x":1508,"y":149,"w":508,"h":126},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":100,"y":137,"w":508,"h":126},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_59.png",
+	"frame": {"x":1508,"y":277,"w":508,"h":126},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":100,"y":137,"w":508,"h":126},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_60.png",
+	"frame": {"x":1508,"y":405,"w":508,"h":126},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":100,"y":137,"w":508,"h":126},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_61.png",
+	"frame": {"x":1508,"y":533,"w":508,"h":126},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":100,"y":137,"w":508,"h":126},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_62.png",
+	"frame": {"x":1508,"y":1,"w":508,"h":146},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":100,"y":127,"w":508,"h":146},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_63.png",
+	"frame": {"x":997,"y":498,"w":509,"h":176},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":99,"y":112,"w":509,"h":176},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_64.png",
+	"frame": {"x":1,"y":1185,"w":509,"h":206},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":99,"y":97,"w":509,"h":206},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_65.png",
+	"frame": {"x":997,"y":262,"w":509,"h":234},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":99,"y":83,"w":509,"h":234},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_66.png",
+	"frame": {"x":997,"y":1,"w":509,"h":259},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":99,"y":70,"w":509,"h":259},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_67.png",
+	"frame": {"x":1508,"y":661,"w":504,"h":278},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":104,"y":61,"w":504,"h":278},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_68.png",
+	"frame": {"x":499,"y":297,"w":496,"h":291},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":112,"y":54,"w":496,"h":291},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_69.png",
+	"frame": {"x":1,"y":1,"w":496,"h":294},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":112,"y":53,"w":496,"h":294},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_70.png",
+	"frame": {"x":1,"y":297,"w":496,"h":294},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":112,"y":53,"w":496,"h":294},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_71.png",
+	"frame": {"x":1,"y":593,"w":496,"h":294},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":112,"y":53,"w":496,"h":294},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_72.png",
+	"frame": {"x":1,"y":889,"w":496,"h":294},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":112,"y":53,"w":496,"h":294},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_73.png",
+	"frame": {"x":499,"y":1,"w":496,"h":294},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":112,"y":53,"w":496,"h":294},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_74.png",
+	"frame": {"x":1135,"y":676,"w":369,"h":290},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":246,"y":56,"w":369,"h":290},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_75.png",
+	"frame": {"x":830,"y":1110,"w":388,"h":293},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":248,"y":54,"w":388,"h":293},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_76.png",
+	"frame": {"x":1532,"y":1103,"w":289,"h":293},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":365,"y":54,"w":289,"h":293},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_77.png",
+	"frame": {"x":1220,"y":968,"w":310,"h":293},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":355,"y":54,"w":310,"h":293},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_78.png",
+	"frame": {"x":499,"y":590,"w":316,"h":293},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":352,"y":54,"w":316,"h":293},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_79.png",
+	"frame": {"x":512,"y":1111,"w":316,"h":294},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":352,"y":53,"w":316,"h":294},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_80.png",
+	"frame": {"x":499,"y":941,"w":316,"h":168},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":352,"y":53,"w":316,"h":168},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_81.png",
+	"frame": {"x":817,"y":941,"w":316,"h":167},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":352,"y":53,"w":316,"h":167},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_82.png",
+	"frame": {"x":817,"y":676,"w":316,"h":164},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":352,"y":53,"w":316,"h":164},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_83.png",
+	"frame": {"x":1532,"y":941,"w":316,"h":160},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":352,"y":53,"w":316,"h":160},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ricochetLogo_84.png",
+	"frame": {"x":1,"y":1393,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":710,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "hideLogo.png",
+	"format": "RGBA8888",
+	"size": {"w":2017,"h":1406},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b5df5b7eae12f56c9772af6cff153159:e1b3ce144c71389f2358fc3ec02a61f6:6646e4b8103bd59f1d001f992a7940c8$"
+}
+}

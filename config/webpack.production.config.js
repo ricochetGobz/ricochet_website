@@ -40,6 +40,7 @@ module.exports = {
     {
       test: /\.json$/,
       loader: 'file?name=data/[name].[ext]',
+      include: path.resolve(__dirname, '../app/assets/')
     },
     {
       test: /\.(eot|svg|ttf|woff)$/,
