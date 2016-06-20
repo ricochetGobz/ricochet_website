@@ -93,4 +93,47 @@
     color: fontColor;
     margin-left: _margin * 3;
   }
+
+  +mobile() {
+    &-capsule {
+      width: capsuleWidth_mobile;
+      height: capsuleHeight_mobile;
+      border-radius: capsuleWidth_mobile * 0.5;
+      transform-origin: bottom left;
+      margin: 0;
+
+      &:hover {
+
+        .Person-job {
+          bottom: _margin;
+        }
+
+        & ~ .Person-firstname {
+          margin-left: -(_margin * 7);
+          opacity: 1;
+        }
+
+        & ~ .Person-lastname {
+          margin-left: (_margin * 20);
+          opacity: 1;
+        }
+      }
+    }
+
+    &-job {
+      right: 1em;
+    }
+
+    &-firstname, &-lastname {
+      width: 120%;
+    }
+
+    &-firstname {
+      text-align: right;
+    }
+
+    &-lastname {
+      margin-top: -(_margin * 8);
+    }
+  }
 }

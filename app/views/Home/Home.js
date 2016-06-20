@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import TweenLite from 'gsap';
 
+import utils from '../../core/utils';
+
 import Slider from '../../components/Slider/Slider';
 
 import Accueil from './Accueil/Accueil';
@@ -11,12 +13,17 @@ import Team from './Team/Team';
 import './Home.styl';
 
 
-const MARGIN_TOP = 100;
-const MARGIN_BOTTOM = 64;
-
 export default class Layout extends Component {
   constructor(props) {
     super(props);
+
+    this._marginTop = 100;
+    this._marginBottom = 64;
+
+    if (utils.mobileCheck()) {
+      this._marginTop = 0;
+      this._marginBottom = 0;
+    }
 
     this.state = {
       currentView: 0,
@@ -49,8 +56,8 @@ export default class Layout extends Component {
   }
 
   _resizeView() {
-    const margin = `${MARGIN_TOP}px auto ${MARGIN_BOTTOM}px auto`;
-    const height = `${window.innerHeight - MARGIN_TOP - MARGIN_BOTTOM}px`;
+    const margin = `${this._marginTop}px auto ${this._marginBottom}px auto`;
+    const height = `${window.innerHeight - this._marginTop - this._marginBottom}px`;
     this.refs.homeWrapper.style.marginTop = `${-this.state.currentView * window.innerHeight}px`;
     this.setState({ height: window.innerHeight, style: { height, margin } });
   }

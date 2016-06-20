@@ -24,4 +24,24 @@
     width: 20%;
   }
 
+  +mobile() {
+    transform: none;
+
+    &-title {
+      display: none;
+    }
+
+    &-persons {
+      // center();
+      transform: translate(-(cos(capsuleRotation)*(capsuleHeight_mobile))+(cos(capsuleRotation)*(capsuleWidth_mobile))*2.5, -(cos(capsuleRotation)*(capsuleHeight_mobile))+(cos(capsuleRotation)*(capsuleWidth_mobile)));
+      margin-top: 0;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+    }
+
+    &-person {
+      height: capsuleWidth_mobile * 2;
+    }
+  }
 }

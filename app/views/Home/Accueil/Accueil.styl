@@ -10,6 +10,10 @@
     width: 40%;
     max-width: 710px;
     pointer-events: none;
+
+    +mobile() {
+      width: 90%;
+    }
   }
 
   // SCROLL
@@ -24,6 +28,12 @@
     flex-direction: column;
     align-items: center;
     opacity: 0;
+
+    +mobile() {
+      p {
+        display: none;
+      }
+    }
   }
 
   &-mouse {
@@ -43,6 +53,9 @@
       background-color: fontColor;
     }
 
+    +mobile() {
+      display: none;
+    }
   }
 
   &-arrowDown{

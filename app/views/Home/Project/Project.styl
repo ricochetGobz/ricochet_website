@@ -20,7 +20,6 @@
     }
   }
 
-
   &-title {
 
     span:first-child {
@@ -42,13 +41,35 @@
     width: 90%;
   }
 
+  &-cube, &-notes {
+    center();
+  }
+
   &-cube {
-    position: relative;
     opacity: 0.9;
   }
 
   &-notes {
-    center();
     width: 450px;
+  }
+
+  +mobile() {
+    height: 250px;
+    flex-direction: column-reverse;
+    justify-content: center;
+
+    &-column_left, &-column_right {
+      width: 90%;
+      height: 35%;
+    }
+
+    &-subtitle {
+      font-size: 1.1em;
+      margin-bottom: 0;
+    }
+
+    &-paragraph {
+      display: none;
+    }
   }
 }
