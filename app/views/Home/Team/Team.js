@@ -34,7 +34,6 @@ export default class Team extends Component {
 
   _close() {
     console.log("close Team");
-    this.props.changeView();
   }
 
 

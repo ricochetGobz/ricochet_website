@@ -2,12 +2,13 @@
 @import '../../style/mixins';
 
 .Navbar {
+  box-sizing: border-box;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  //height: navbarHeight - _margin*6;
   display: flex;
+  height: navbarHeight;
   align-items: flex-start;
   justify-content: center;
   padding: _margin * 3;
@@ -23,6 +24,12 @@
     position: relative;
     width: 200px;
     text-transform: uppercase;
+
+    a {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
 
     &_right {
       align-self: flex-end;

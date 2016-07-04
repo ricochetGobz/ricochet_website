@@ -3,18 +3,13 @@ import React, { Component } from 'react';
 import Point from '../_Point/_Point';
 import './Slider.styl';
 
-const ACCEUIL = 0;
-const PROJECT = 1;
-const VIDEOS = 2;
-const TEAM = 3;
-
 export default class Slider extends Component {
   constructor(props) {
     super(props);
     this.viewActive = -1;
     this.state = {};
 
-    this._selectView = this._selectView.bind(this);
+    this._changeView = this._changeView.bind(this);
   }
 
   componentDidMount() {
@@ -25,26 +20,28 @@ export default class Slider extends Component {
     this.viewActive = -1;
   }
 
-  _isActive(view) {
-    return (this.props.currentView === view || this.viewActive === view)
+  _isActive(key) {
+    console.log(this.props.currentView);
+    console.log(this.viewActive);
+    return (this.props.currentView === key || this.viewActive === key)
   }
 
-  _selectView(view) {
+  _changeView(view) {
     this.viewActive = view;
-    this.props.selectView(view);
+    this.props.changeView(view);
   }
 
   render() {
-    // TODO récupérer un array des view
     return (
       <section className="Slider">
         {
-          this.props.views.map((view) =>
+          this.props.views.map((view, key) =>
             <Point
-              viewId={view.id}
+              id={key}
+              key={key}
               viewName={view.name}
-              selectView={this._selectView}
-              isActive={this._isActive(view.id)}
+              changeView={this._changeView}
+              isActive={this._isActive(key)}
             />
           )
         }
@@ -56,5 +53,5 @@ export default class Slider extends Component {
 Slider.propTypes = {
   views: React.PropTypes.object,
   currentView: React.PropTypes.number,
-  selectView: React.PropTypes.func,
+  changeView: React.PropTypes.func,
 };

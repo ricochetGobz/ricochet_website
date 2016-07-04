@@ -8,7 +8,7 @@ export default class _Point extends Component {
     return (
       <li
         className={`Slider-point Point ${this.props.isActive ? 'Point_active' : ''}`}
-        onClick={() => this.props.selectView(this.props.viewId)}
+        onClick={() => this.props.changeView(this.props.id)}
       >
         <span className="Point-name">{this.props.viewName}</span>
         <div className="Point-circles"></div>
@@ -19,8 +19,8 @@ export default class _Point extends Component {
 
 
 _Point.propTypes = {
+  id: React.PropTypes.number,
   isActive: React.PropTypes.bool,
-  viewId: React.PropTypes.number,
   viewName: React.PropTypes.string,
-  selectView: React.PropTypes.func,
+  changeView: React.PropTypes.func,
 };

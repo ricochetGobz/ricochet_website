@@ -33,7 +33,6 @@ export default class Videos extends Component {
 
   _close() {
     console.log("close Team");
-    this.props.changeView();
   }
 
   render() {
@@ -48,5 +47,4 @@ export default class Videos extends Component {
 Videos.propTypes = {
   style: React.PropTypes.object,
   openned: React.PropTypes.bool,
-  changeView: React.PropTypes.func,
 };

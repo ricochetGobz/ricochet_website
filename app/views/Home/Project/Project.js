@@ -11,6 +11,7 @@ export default class Project extends Component {
   constructor(props) {
     super(props);
 
+    this._openned = false;
     this._rotationStarter = false;
     this._notesSprite = [];
 
@@ -50,13 +51,11 @@ export default class Project extends Component {
     console.log('open Project');
     this.setState({ face: this.state.lastFace, startRotation: true });
     this._notesSprite[this.state.lastFace].player.play();
-
   }
 
   _close() {
     console.log('close Project');
     this.setState({ face: -1, startRotation: false });
-    this.props.changeView();
   }
 
   _startRotation() {
@@ -123,5 +122,4 @@ export default class Project extends Component {
 Project.propTypes = {
   style: React.PropTypes.object,
   openned: React.PropTypes.bool,
-  changeView: React.PropTypes.func,
 };

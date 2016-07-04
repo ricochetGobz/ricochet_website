@@ -43,7 +43,6 @@ export default class Accueil extends Component {
   _onLogoAnimComplete() {
     TweenLite.to(this.refs.scrollIndicator, 0.5, { onComplete: () => {
       this._openned = this._willOpenned;
-      if (!this._openned) this.props.changeView();
 
       if (this._changeViewCalled) {
         this.forceUpdate();
@@ -52,7 +51,7 @@ export default class Accueil extends Component {
     },
       ease: Power3.easeOut,
       opacity: this._willOpenned ? 1 : 0,
-      bottom: this._willOpenned ? 0 : '16px',
+      bottom: this._willOpenned ? '32px' : '46px',
     }
     );
   }
