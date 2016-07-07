@@ -11,17 +11,21 @@ export default class Accueil extends Component {
   constructor(props) {
     super(props);
 
-    this._openned = false;
-    this._willOpenned = false;
-    this._changeViewCalled = false;
+    this._openned = true;
+    this._showLogo = true;
+    this._scrollIndicatorAnimation = null;
 
-    this.state = {};
-
-    this._onLogoAnimComplete = this._onLogoAnimComplete.bind(this);
+    this._checkStatus = this._checkStatus.bind(this);
+    this._toggleScrollIndicator = this._toggleScrollIndicator.bind(this);
   }
 
   componentDidMount() {
-    this._checkStatus();
+    this._scrollIndicatorAnimation = new TweenLite(this.refs.scrollIndicator, 0.5, {
+      ease: Power3.easeOut,
+      paused: true,
+      opacity: 1,
+      bottom: 32,
+    });
   }
 
   componentDidUpdate() {
@@ -30,30 +34,17 @@ export default class Accueil extends Component {
 
   _checkStatus() {
     if (this.props.openned !== this._openned) {
-      if (this.props.openned) {
-        this._willOpenned = true;
-      } else {
-        this._willOpenned = false;
-      }
-    } else {
-      this._changeViewCalled = true;
+      this._openned = this.props.openned;
+      this._toggleScrollIndicator();
     }
   }
 
-  _onLogoAnimComplete() {
-    TweenLite.to(this.refs.scrollIndicator, 0.5, { onComplete: () => {
-      this._openned = this._willOpenned;
-
-      if (this._changeViewCalled) {
-        this.forceUpdate();
-        this._changeViewCalled = false;
-      }
-    },
-      ease: Power3.easeOut,
-      opacity: this._willOpenned ? 1 : 0,
-      bottom: this._willOpenned ? '32px' : '46px',
+  _toggleScrollIndicator() {
+    if (this._openned) {
+      this._scrollIndicatorAnimation.play();
+    } else {
+      this._scrollIndicatorAnimation.reverse();
     }
-    );
   }
 
   render() {
@@ -62,8 +53,8 @@ export default class Accueil extends Component {
           <div ref="logo" className="Accueil-logo">
             <Logo
               width={this.refs.logo}
-              showLogo={this.props.openned}
-              onAnimComplete={this._onLogoAnimComplete}
+              showLogo={this._showLogo}
+              callbackLogoShowed={this._toggleScrollIndicator}
             />
           </div>
           <div ref="scrollIndicator" className="Accueil-scrollIndicator">
@@ -79,5 +70,4 @@ export default class Accueil extends Component {
 Accueil.propTypes = {
   style: React.PropTypes.object,
   openned: React.PropTypes.bool,
-  changeView: React.PropTypes.func,
 };

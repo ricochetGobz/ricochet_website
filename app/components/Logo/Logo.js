@@ -12,63 +12,60 @@ export default class Logo extends Component {
   constructor(props) {
     super(props);
 
-    this._showLogoPlayer = false;
-    this._hideLogoPlayer = false;
+    this._isShowed = false;
+    this._spriteLoaded = false;
 
-    this.isShowed = false;
+    this._showLogoAnimation = false;
+    this._hideLogoAnimation = false;
 
-    this.state = {
-      spriteLoaded: false,
-    };
-
+    this._checkLogoStatus = this._checkLogoStatus.bind(this);
     this._loadSprites = this._loadSprites.bind(this);
     this._onSpriteLoaded = this._onSpriteLoaded.bind(this);
   }
 
   componentDidMount() {
-    this._showLogoPlayer = new SpritePlayer(this.refs.logo);
-    this._hideLogoPlayer = new SpritePlayer(this.refs.logo);
+    this._showLogoAnimation = new SpritePlayer(this.refs.logo);
+    this._hideLogoAnimation = new SpritePlayer(this.refs.logo);
     this._loadSprites();
   }
 
   componentDidUpdate() {
-    if (!this.state.spriteLoaded) {
+    if (!this._spriteLoaded) {
       this._loadSprites();
       return;
     }
 
-    this._toggleLogo();
+    this._checkLogoStatus();
   }
 
-  _toggleLogo() {
-    if (this.props.showLogo && !this.isShowed) {
-      this._hideLogoPlayer.stop();
-      this._showLogoPlayer.play({
+  _checkLogoStatus() {
+    if (this.props.showLogo && !this._isShowed) {
+      this._hideLogoAnimation.stop();
+      this._showLogoAnimation.play({
         onComplete: () => {
-          this.isShowed = true;
-          this.props.onAnimComplete();
+          this._isShowed = true;
+          this.props.callbackLogoShowed();
         },
       });
-    } else if (!this.props.showLogo && this.isShowed) {
-      this._hideLogoPlayer.play({
+    } else if (!this.props.showLogo && this._isShowed) {
+      this._showLogoAnimation.stop();
+      this._hideLogoAnimation.play({
         onComplete: () => {
-          this.isShowed = false;
-          this.props.onAnimComplete();
+          this._isShowed = false;
         },
       });
-      this._showLogoPlayer.stop();
     }
   }
 
   _loadSprites() {
-    this._showLogoPlayer.load(showLogoSpriteUrl, showLogoSpriteJson, () => {
-      this._hideLogoPlayer.load(hideLogoSpriteUrl, hideLogoSpriteJson, this._onSpriteLoaded);
+    this._showLogoAnimation.load(showLogoSpriteUrl, showLogoSpriteJson, () => {
+      this._hideLogoAnimation.load(hideLogoSpriteUrl, hideLogoSpriteJson, this._onSpriteLoaded);
     });
   }
 
   _onSpriteLoaded() {
-    this.setState({ spriteLoaded: true });
-    if (this.props.showLogo) this._toggleLogo();
+    this._spriteLoaded = true;
+    if (this.props.showLogo) this._checkLogoStatus();
   }
 
   render() {
@@ -84,5 +81,5 @@ export default class Logo extends Component {
 
 Logo.propTypes = {
   showLogo: React.PropTypes.bool,
-  onAnimComplete: React.PropTypes.func,
+  callbackLogoShowed: React.PropTypes.func,
 };
