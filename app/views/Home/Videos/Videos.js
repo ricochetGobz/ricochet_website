@@ -1,38 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
+
+import _Section from '../../../components/_Section/_Section';
 
 import './Videos.styl';
 
-export default class Videos extends Component {
+export default class Videos extends _Section {
   constructor(props) {
     super(props);
-    this.state = {};
-  }
-
-  componentDidMount() {
-    this._checkStatus();
-  }
-
-  componentDidUpdate() {
-    this._checkStatus();
-  }
-
-  _checkStatus() {
-    if (this.props.openned !== this._openned) {
-      if (this.props.openned) {
-        this._open();
-      } else {
-        this._close();
-      }
-      this._openned = this.props.openned;
-    }
   }
 
   _open() {
-    console.log("open Team");
+    console.log('open Team');
   }
 
   _close() {
-    console.log("close Team");
+    console.log('close Team');
   }
 
   render() {

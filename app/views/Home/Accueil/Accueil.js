@@ -1,22 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import TweenLite from 'gsap';
 
-
+import _Section from '../../../components/_Section/_Section';
 import Logo from '../../../components/Logo/Logo';
 
 import './Accueil.styl';
 
 
-export default class Accueil extends Component {
+export default class Accueil extends _Section {
   constructor(props) {
     super(props);
 
-    this._openned = true;
     this._showLogo = true;
     this._scrollIndicatorAnimation = null;
-
-    this._checkStatus = this._checkStatus.bind(this);
-    this._toggleScrollIndicator = this._toggleScrollIndicator.bind(this);
   }
 
   componentDidMount() {
@@ -28,23 +24,16 @@ export default class Accueil extends Component {
     });
   }
 
-  componentDidUpdate() {
-    this._checkStatus();
+  _toggle() {
+    super._toggle();
   }
 
-  _checkStatus() {
-    if (this.props.openned !== this._openned) {
-      this._openned = this.props.openned;
-      this._toggleScrollIndicator();
-    }
+  _open() {
+    this._scrollIndicatorAnimation.play();
   }
 
-  _toggleScrollIndicator() {
-    if (this._openned) {
-      this._scrollIndicatorAnimation.play();
-    } else {
-      this._scrollIndicatorAnimation.reverse();
-    }
+  _close() {
+    this._scrollIndicatorAnimation.reverse();
   }
 
   render() {
@@ -54,7 +43,7 @@ export default class Accueil extends Component {
             <Logo
               width={this.refs.logo}
               showLogo={this._showLogo}
-              callbackLogoShowed={this._toggleScrollIndicator}
+              callbackLogoShowed={this._toggle}
             />
           </div>
           <div ref="scrollIndicator" className="Accueil-scrollIndicator">

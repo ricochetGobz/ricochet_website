@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import SpritePlayer from '../../../core/SpritePlayer';
 
+import _Section from '../../../components/_Section/_Section';
 import Cube from '../../../components/Cube/Cube';
 
 import './Project.styl';
 
 
-export default class Project extends Component {
+export default class Project extends _Section {
   constructor(props) {
     super(props);
 
-    this._openned = false;
-    this._rotationStarter = false;
+    this._rotationStarted = false;
+    this._projectAnimation = new TimelineLite();
     this._notesSprite = [];
 
     this.state = {
@@ -25,43 +26,31 @@ export default class Project extends Component {
   }
 
   componentDidMount() {
-    this._checkStatus();
-
-    // Load Sprites
+    super.componentDidMount();
+    this._projectAnimation.from(this.refs.project, 0.5, { ease: Power2.easeIn, opacity: 0 });
     this._loadSprites();
   }
 
   componentDidUpdate() {
-    this._checkStatus();
-    if (this.state.startRotation && !this._rotationStarter) this._startRotation();
-  }
-
-  _checkStatus() {
-    if (this.props.openned !== this._openned) {
-      if (this.props.openned) {
-        this._open();
-      } else {
-        this._close();
-      }
-      this._openned = this.props.openned;
-    }
+    super.componentDidUpdate();
+    if (this.state.startRotation && !this._rotationStarted) this._startRotation();
   }
 
   _open() {
-    console.log('open Project');
+    this._projectAnimation.play();
     this.setState({ face: this.state.lastFace, startRotation: true });
     this._notesSprite[this.state.lastFace].player.play();
   }
 
   _close() {
-    console.log('close Project');
+    this._projectAnimation.reverse();
     this.setState({ face: -1, startRotation: false });
   }
 
   _startRotation() {
-    this._rotationStarter = true;
+    this._rotationStarted = true;
     setTimeout(() => {
-      this._rotationStarter = false;
+      this._rotationStarted = false;
       const newFace = ((this.state.lastFace + 1) % 6);
       this.setState({ face: newFace, lastFace: newFace });
       this._notesSprite[newFace].player.play();
@@ -94,7 +83,7 @@ export default class Project extends Component {
 
   render() {
     return (
-      <section className="Home-section Project" style={this.props.style}>
+      <section ref="project" className="Home-section Project" style={this.props.style}>
         <div className="Project-column Project-column_left">
           <canvas ref="notes" className="Project-notes" />
           <div className="Project-cube">

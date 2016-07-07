@@ -1,45 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
+import TweenLite from "gsap";
 
+import _Section from '../../../components/_Section/_Section';
 import Person from '../../../components/_Person/_Person.js';
 import './Team.styl';
 
-export default class Team extends Component {
+export default class Team extends _Section {
   constructor(props) {
     super(props);
-    this.state = {};
+    this._teamAnimation = new TimelineLite();
   }
 
   componentDidMount() {
-    this._checkStatus();
-  }
-
-  componentDidUpdate() {
-    this._checkStatus();
-  }
-
-  _checkStatus() {
-    if (this.props.openned !== this._openned) {
-      if (this.props.openned) {
-        this._open();
-      } else {
-        this._close();
-      }
-      this._openned = this.props.openned;
-    }
+    this._teamAnimation.from(this.refs.team, 0.5, { ease: Power2.easeIn, opacity: 0 });
+    super.componentDidMount();
   }
 
   _open() {
-    console.log("open Team");
+    this._teamAnimation.play();
   }
 
   _close() {
-    console.log("close Team");
+    this._teamAnimation.reverse();
   }
 
 
   render() {
     return (
-      <section className="Home-section Team" style={this.props.style}>
+      <section ref="team" className="Home-section Team" style={this.props.style}>
         <h2 className="Team-title">{'L\'Équipe'}</h2>
         <ul className="Team-persons">
           <li className="Team-person">

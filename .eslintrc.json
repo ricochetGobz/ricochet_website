@@ -3,7 +3,9 @@
 
   "globals": {
     "app": true,
-    "Power3": true
+    "TimelineLite": true,
+    "Power3": true,
+    "Power2": true
   },
 
   "rules": {}
