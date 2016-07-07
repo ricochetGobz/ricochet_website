@@ -21,9 +21,7 @@ export default class Slider extends Component {
   }
 
   _isActive(key) {
-    console.log(this.props.currentView);
-    console.log(this.viewActive);
-    return (this.props.currentView === key || this.viewActive === key)
+    return (this.props.currentView === key || this.viewActive === key);
   }
 
   _changeView(view) {

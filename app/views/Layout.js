@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Navbar from '../components/Navbar/Navbar';
+import ShapeFactory from '../core/shapeFactory';
 
 import patternUrl from '../assets/imgs/pattern.jpg';
 
@@ -11,12 +12,12 @@ export default class Layout extends Component {
     this._canvas = false;
     this._context = false;
     this._pattern = new Image();
+    this._shapesFactory = new ShapeFactory();
     this._increment = 0;
-    this._ratio = 1;
+    this._ratio = -1;
     this._nbrImageWidth = -1;
     this._nbrImageHeight = -1;
-
-    this.state = {};
+    this._shapes = [];
 
     this._loop = this._loop.bind(this);
     this._onPatternLoaded = this._onPatternLoaded.bind(this);
@@ -30,6 +31,10 @@ export default class Layout extends Component {
 
     this._pattern.onload = this._onPatternLoaded;
     this._pattern.src = patternUrl;
+
+    document.body.addEventListener('click', (e) => this._shapesFactory.createRandomShape(e.x, e.y));
+
+    this._shapesFactory.popShapes(4);
   }
 
   _onPatternLoaded() {
@@ -45,6 +50,8 @@ export default class Layout extends Component {
     this._context.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
     let i, j;
+
+    // Animate pattern
     for (i = -1; i < this._nbrImageWidth; i++) {
       for (j = -1; j < this._nbrImageHeight; j++) {
         this._context.drawImage(this._pattern,
@@ -57,6 +64,9 @@ export default class Layout extends Component {
     }
 
     this._increment = (this._increment + 0.5) % this._pattern.width;
+
+    // Animate shapes
+    this._shapesFactory.updateShapes(this._context);
 
     requestAnimationFrame(this._loop);
   }
