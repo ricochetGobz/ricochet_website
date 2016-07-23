@@ -3,13 +3,6 @@ import React, { Component } from 'react';
 import './_Person.styl';
 
 export default class _Person extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  componentDidMount() {
-  }
 
   render() {
     return (

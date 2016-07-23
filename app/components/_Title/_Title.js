@@ -17,8 +17,7 @@ export default class _Title extends Component {
     this._toggleTitleAnimation = this._toggleTitleAnimation.bind(this);
   }
   componentDidMount() {
-    this._titleAnimation = new TextAnimation(this.refs.title);
-    // IN PROGRESS
+    this._titleAnimation = new TextAnimation(this.refs.title, 100);
     this._titleAnimation.addEffectForEachLetter(
       (animationsArray) => animationsArray[utils.getRandomInt(1, animationsArray.length - 1)]
     );
@@ -47,7 +46,9 @@ export default class _Title extends Component {
 
   render() {
     return (
-      <h2 ref="title" className={`Title Title-hidden ${this.props._className}`} >{this.props.children}</h2>
+      <h2 ref="title" className={`Title Title-hidden ${this.props._className}`}>
+        {this.props.children}
+      </h2>
     );
   }
 }

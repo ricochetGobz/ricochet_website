@@ -1,8 +1,11 @@
 import React from 'react';
 
+import utils from '../../../core/utils';
 import SpritePlayer from '../../../core/SpritePlayer';
+import TextAnimation from '../../../core/TextAnimation/TextAnimation';
 
 import _Section from '../../../components/_Section/_Section';
+import _Title from '../../../components/_Title/_Title';
 import Cube from '../../../components/Cube/Cube';
 
 import './Project.styl';
@@ -17,6 +20,7 @@ export default class Project extends _Section {
     this._notesSprite = [];
 
     this.state = {
+      openned: false,
       face: -1,
       startRotation: false,
       lastFace: 0,
@@ -28,6 +32,10 @@ export default class Project extends _Section {
   componentDidMount() {
     super.componentDidMount();
     this._projectAnimation.from(this.refs.project, 0.5, { ease: Power2.easeIn, opacity: 0 });
+    this._titleHeadAnimation = new TextAnimation(this.refs.titleHead, 50, 'right');
+    this._titleHeadAnimation.addEffectForEachLetter(
+      (animationsArray) => animationsArray[utils.getRandomInt(1, animationsArray.length - 1)]
+    );
     this._loadSprites();
   }
 
@@ -37,14 +45,19 @@ export default class Project extends _Section {
   }
 
   _open() {
-    this._projectAnimation.play();
-    this.setState({ face: this.state.lastFace, startRotation: true });
-    this._notesSprite[this.state.lastFace].player.play();
+    // this._projectAnimation.play();
+    this._titleHeadAnimation.show(() => {
+      this.setState({ openned: true, face: this.state.lastFace, startRotation: true });
+    });
+    // this._notesSprite[this.state.lastFace].player.play();
   }
 
   _close() {
-    this._projectAnimation.reverse();
-    this.setState({ face: -1, startRotation: false });
+    if (this.state.openned) {
+      // this._projectAnimation.reverse();
+      this._titleHeadAnimation.hide();
+      this.setState({ openned: false, face: -1, startRotation: false });
+    }
   }
 
   _startRotation() {
@@ -53,7 +66,7 @@ export default class Project extends _Section {
       this._rotationStarted = false;
       const newFace = ((this.state.lastFace + 1) % 6);
       this.setState({ face: newFace, lastFace: newFace });
-      this._notesSprite[newFace].player.play();
+      // this._notesSprite[newFace].player.play();
     }, 3500);
   }
 
@@ -91,7 +104,8 @@ export default class Project extends _Section {
           </div>
         </div>
         <div className="Project-column Project-column_right">
-          <h2 className="Project-title"><span>le projet</span> <br /> ricochet</h2>
+          <p className="Project-titleHead" ref="titleHead" >le projet</p>
+          <_Title _className="Project-title" openned={this.state.openned}>Ricochet</_Title>
           <p className="Project-subtitle">Une musique insonore</p>
           <p className="Project-paragraph"> Nous n’avons pas pour objectif de faire
             à nouveau entendre les personnes sourdes/malentendantes,

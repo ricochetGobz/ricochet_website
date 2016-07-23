@@ -4,8 +4,6 @@ export default class _Section extends Component {
   constructor(props) {
     super(props);
 
-    this._openned = true;
-
     this._checkStatus = this._checkStatus.bind(this);
     this._toggle = this._toggle.bind(this);
     this._open = this._open.bind(this);
@@ -36,11 +34,11 @@ export default class _Section extends Component {
   }
 
   _open() {
-    console.log('show view');
+    console.warn('_open is not impremented by the child');
   }
 
   _close() {
-    console.log('hide view');
+    console.warn('_close is not impremented by the child');
   }
 }
 
