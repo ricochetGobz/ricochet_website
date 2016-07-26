@@ -17,6 +17,8 @@ export default class Project extends _Section {
 
     this._rotationStarted = false;
     this._projectAnimation = new TimelineLite();
+    this._paragraphAnimation = new TimelineLite();
+    this._titleHeadAnimation = false;
     this._notesSprite = [];
 
     this.state = {
@@ -27,15 +29,26 @@ export default class Project extends _Section {
     };
 
     this._loadSprite = this._loadSprite.bind(this);
+    this._onTitleShowed = this._onTitleShowed.bind(this);
   }
 
   componentDidMount() {
     super.componentDidMount();
     this._projectAnimation.from(this.refs.project, 0.5, { ease: Power2.easeIn, opacity: 0 });
-    this._titleHeadAnimation = new TextAnimation(this.refs.titleHead, 50, 'right');
+
+    this._titleHeadAnimation = new TextAnimation(this.refs.titleHead, 20);
     this._titleHeadAnimation.addEffectForEachLetter(
       (animationsArray) => animationsArray[utils.getRandomInt(1, animationsArray.length - 1)]
     );
+
+    let i;
+    const paragraphs = document.getElementsByClassName('Project-paragraph');
+    this._paragraphAnimation.from(this.refs.subtitle, 0.5, { ease: Power2.easeOut, opacity: 0, transform: 'translateX(-16px)' });
+    for (i = 0; i < paragraphs.length; i++) {
+      this._paragraphAnimation.from(paragraphs[i], 0.5, { ease: Power2.easeOut, opacity: 0, transform: 'translateX(-16px)' }, '-=0.4');
+    }
+    this._paragraphAnimation.reverse();
+
     this._loadSprites();
   }
 
@@ -52,10 +65,21 @@ export default class Project extends _Section {
     // this._notesSprite[this.state.lastFace].player.play();
   }
 
+  _onTitleShowed() {
+    if (this.state.openned) {
+      // Show text
+      console.log('pla()')
+      this._paragraphAnimation.play();
+
+    }
+  }
+
   _close() {
     if (this.state.openned) {
       // this._projectAnimation.reverse();
+      this._paragraphAnimation.reverse();
       this._titleHeadAnimation.hide();
+      console.log('hide');
       this.setState({ openned: false, face: -1, startRotation: false });
     }
   }
@@ -99,18 +123,19 @@ export default class Project extends _Section {
       <section ref="project" className="Home-section Project" style={this.props.style}>
         <div className="Project-column Project-column_left">
           <canvas ref="notes" className="Project-notes" />
-          <div className="Project-cube">
+          <div className="Project-column Project-column_left Project-cube">
             <Cube face={this.state.face} />
           </div>
         </div>
         <div className="Project-column Project-column_right">
           <p className="Project-titleHead" ref="titleHead" >le projet</p>
-          <_Title _className="Project-title" openned={this.state.openned}>Ricochet</_Title>
-          <p className="Project-subtitle">Une musique insonore</p>
+          <_Title _className="Project-title" openned={this.state.openned} onAnimationEnded={this._onTitleShowed} >Ricochet</_Title>
+          <p ref="subtitle" className="Project-subtitle">Une musique insonore</p>
           <p className="Project-paragraph"> Nous n’avons pas pour objectif de faire
             à nouveau entendre les personnes sourdes/malentendantes,
             de leur faire retrouver l’ouïe, de retrouver un sens perdu.
-            <br /> <br />
+          </p>
+          <p className="Project-paragraph">
             Notre projet, au contraire souhaite s’appuyer sur tout les autres
             sens et sur un dispositif collaboratif afin de faire découvrir
             la musique autrement (autant aux sourds qu’aux personnes ordinaires ).

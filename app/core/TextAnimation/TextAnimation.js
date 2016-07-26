@@ -14,6 +14,7 @@ export default class TextAnimation {
   constructor(element, letterTransition, letterStyle) {
     this.element = element;
     this.letterTransition = letterTransition || 150;
+    // TODO add random animations
     this.animations = ['opacity', 'top', 'bottom', 'left', 'right'];
     this.letterStyle = letterStyle || this.animations[0];
 

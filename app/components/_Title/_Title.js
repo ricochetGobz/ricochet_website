@@ -34,13 +34,21 @@ export default class _Title extends Component {
         this._titleAnimation.show(() => {
           this.setState({ openned: true });
           this.refs.title.classList.remove('Title-hidden');
+          this._onAnimationEnded();
         });
       } else {
         this._titleAnimation.hide(() => {
           this.setState({ openned: false });
         });
+        this._onAnimationEnded();
         this.refs.title.classList.add('Title-hidden');
       }
+    }
+  }
+
+  _onAnimationEnded() {
+    if (typeof(this.props.onAnimationEnded) === 'function') {
+      setTimeout(this.props.onAnimationEnded, 400);
     }
   }
 
@@ -58,4 +66,5 @@ _Title.propTypes = {
   children: React.PropTypes.node,
   _className: React.PropTypes.string,
   openned: React.PropTypes.bool,
+  onAnimationEnded: React.PropTypes.func,
 };
