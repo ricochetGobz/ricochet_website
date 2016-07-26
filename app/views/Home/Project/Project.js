@@ -16,7 +16,6 @@ export default class Project extends _Section {
     super(props);
 
     this._rotationStarted = false;
-    this._projectAnimation = new TimelineLite();
     this._paragraphAnimation = new TimelineLite();
     this._titleHeadAnimation = false;
     this._notesSprite = [];
@@ -34,7 +33,6 @@ export default class Project extends _Section {
 
   componentDidMount() {
     super.componentDidMount();
-    this._projectAnimation.from(this.refs.project, 0.5, { ease: Power2.easeIn, opacity: 0 });
 
     this._titleHeadAnimation = new TextAnimation(this.refs.titleHead, 20);
     this._titleHeadAnimation.addEffectForEachLetter(
@@ -58,7 +56,6 @@ export default class Project extends _Section {
   }
 
   _open() {
-    // this._projectAnimation.play();
     this._titleHeadAnimation.show(() => {
       this.setState({ openned: true, face: this.state.lastFace, startRotation: true });
     });
@@ -68,7 +65,6 @@ export default class Project extends _Section {
   _onTitleShowed() {
     if (this.state.openned) {
       // Show text
-      console.log('pla()')
       this._paragraphAnimation.play();
 
     }
@@ -76,7 +72,6 @@ export default class Project extends _Section {
 
   _close() {
     if (this.state.openned) {
-      // this._projectAnimation.reverse();
       this._paragraphAnimation.reverse();
       this._titleHeadAnimation.hide();
       console.log('hide');
