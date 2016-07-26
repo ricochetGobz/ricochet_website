@@ -34,7 +34,7 @@ export default class Project extends _Section {
   componentDidMount() {
     super.componentDidMount();
 
-    this._titleHeadAnimation = new TextAnimation(this.refs.titleHead, 20);
+    this._titleHeadAnimation = new TextAnimation(this.refs.titleHead, 50);
     this._titleHeadAnimation.addEffectForEachLetter(
       (animationsArray) => animationsArray[utils.getRandomInt(1, animationsArray.length - 1)]
     );
@@ -66,7 +66,6 @@ export default class Project extends _Section {
     if (this.state.openned) {
       // Show text
       this._paragraphAnimation.play();
-
     }
   }
 
@@ -74,7 +73,6 @@ export default class Project extends _Section {
     if (this.state.openned) {
       this._paragraphAnimation.reverse();
       this._titleHeadAnimation.hide();
-      console.log('hide');
       this.setState({ openned: false, face: -1, startRotation: false });
     }
   }

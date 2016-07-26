@@ -10,36 +10,53 @@ export default class Team extends _Section {
   constructor(props) {
     super(props);
 
+    this._pills = false;
+    this._pillAnimation = new TimelineLite();
+
     this.state = {
       openned: false,
     };
 
-    this._teamAnimation = new TimelineLite();
+    this._onTitleShowed = this._onTitleShowed.bind(this);
   }
 
   componentDidMount() {
-    this._teamAnimation.from(this.refs.team, 0.5, {
-      ease: Power2.easeIn,
-      opacity: 0,
-    });
     super.componentDidMount();
+
+    this._pills = document.getElementsByClassName('Team-person');
+
+    let i;
+    for (i = 0; i < this._pills.length; i++) {
+      this._pillAnimation.from(this._pills[i], 0.7, {
+        ease: Power2.easeOut,
+        opacity: 0,
+        transform: 'translateX(-32px)',
+        onComplete: ((pill) => () => {
+          pill.style.transform = '';
+        })(this._pills[i]),
+      }, '-=0.55');
+    }
   }
 
   _open() {
     this.setState({ openned: true });
-    this._teamAnimation.play();
+  }
+
+  _onTitleShowed() {
+    if (this.state.openned) {
+      this._pillAnimation.play();
+    }
   }
 
   _close() {
-    this.setState({ openned: false })
-    this._teamAnimation.reverse();
+    this.setState({ openned: false });
+    this._pillAnimation.reverse();
   }
-
 
   render() {
     return (
       <section ref="team" className="Home-section Team" style={this.props.style}>
-        <_Title _className="Team-title" openned={this.state.openned}>{'L\'Équipe'}</_Title>
+        <_Title _className="Team-title" openned={this.state.openned} onAnimationEnded={this._onTitleShowed}>{'L\'Équipe'}</_Title>
         <ul className="Team-persons">
           <li className="Team-person">
             <Person job="Designer" firstname="Tony" lastname="Tran" image={require('../../../assets/imgs/team/tony_tran.jpg')} />

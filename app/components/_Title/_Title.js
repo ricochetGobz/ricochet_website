@@ -17,7 +17,7 @@ export default class _Title extends Component {
     this._toggleTitleAnimation = this._toggleTitleAnimation.bind(this);
   }
   componentDidMount() {
-    this._titleAnimation = new TextAnimation(this.refs.title, 100);
+    this._titleAnimation = new TextAnimation(this.refs.title, 50);
     this._titleAnimation.addEffectForEachLetter(
       (animationsArray) => animationsArray[utils.getRandomInt(1, animationsArray.length - 1)]
     );
