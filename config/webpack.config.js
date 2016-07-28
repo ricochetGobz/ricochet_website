@@ -37,6 +37,10 @@ var config = {
           },
         },
         {
+          test: /\.css$/,
+          loader: 'style!css'
+        },
+        {
           test: /\.styl$/,
           loader: 'style!css?sourceMap!stylus'
         },

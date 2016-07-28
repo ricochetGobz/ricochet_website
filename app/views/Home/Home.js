@@ -24,7 +24,7 @@ export default class Layout extends Component {
       views: [
         { name: 'Accueil', elm: <Accueil /> },
         { name: 'Projet', elm: <Project /> },
-        // { name: 'Vidéos', elm: <Videos /> },
+        { name: 'Vidéos', elm: <Videos /> },
         { name: 'L\'Équipe', elm: <Team /> },
       ],
     };
@@ -81,12 +81,12 @@ export default class Layout extends Component {
     //   return view.elm;
     // })}
 
-    // <Videos style={this.state.style} openned={(this.state.currentView === this.state.views[2].id)} changeView={this._changeView} />
     return (
       <div ref="home" className="Home">
         <Accueil style={style} openned={(this.state.currentView === 0)} />
         <Project style={style} openned={(this.state.currentView === 1)} />
-        <Team style={style} openned={(this.state.currentView === 2)} />
+        <Videos style={style} openned={(this.state.currentView === 2)} />
+        <Team style={style} openned={(this.state.currentView === 3)} />
         <Slider views={this.state.views} currentView={this.state.currentView} changeView={this._changeView} />
       </div>
     );

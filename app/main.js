@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Root from './router';
 
+import 'react-vimeo/lib/Vimeo.min.css';
 import './style/fonts.styl';
 import './style/base.styl';
 

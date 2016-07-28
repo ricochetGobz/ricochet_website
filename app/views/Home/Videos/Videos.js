@@ -1,26 +1,41 @@
 import React from 'react';
+import Vimeo from 'react-vimeo';
 
 import _Section from '../../../components/_Section/_Section';
+import _Title from '../../../components/_Title/_Title';
 
 import './Videos.styl';
 
 export default class Videos extends _Section {
   constructor(props) {
     super(props);
+
+    this.state = {
+      openned: false,
+    };
+
+    this._onTitleShowed = this._onTitleShowed.bind(this);
   }
 
   _open() {
-    console.log('open Team');
+    this.setState({ openned: true });
   }
 
   _close() {
-    console.log('close Team');
+    this.setState({ openned: false });
+  }
+
+  _onTitleShowed() {
+    if (this.state.openned) {
+      // Closed animation
+    }
   }
 
   render() {
     return (
       <section className="Home-section Videos" style={this.props.style}>
-        <h1>Video</h1>
+        <_Title _className="Videos-title" openned={this.state.openned} onAnimationEnded={this._onTitleShowed}>{'Teaser'}</_Title>
+        <Vimeo videoId={176291464} onError={(err) => {console.log(err);}} />,
       </section>
     );
   }
