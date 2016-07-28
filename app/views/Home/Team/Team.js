@@ -59,19 +59,19 @@ export default class Team extends _Section {
         <_Title _className="Team-title" openned={this.state.openned} onAnimationEnded={this._onTitleShowed}>{'L\'Équipe'}</_Title>
         <ul className="Team-persons">
           <li className="Team-person">
-            <Person job="Designer" firstname="Tony" lastname="Tran" image={require('../../../assets/imgs/team/tony_tran.jpg')} />
+            <Person job="Designer" firstname="Tony" lastname="Tran" image={require('../../../assets/imgs/team/tony_tran.jpg')} url="http://arkestar.tumblr.com/" />
           </li>
           <li className="Team-person">
-            <Person job="Développeur" firstname="Arthur" lastname="Robert" image={require('../../../assets/imgs/team/arthur_robert.jpg')} />
+            <Person job="Développeur" firstname="Arthur" lastname="Robert" image={require('../../../assets/imgs/team/arthur_robert.jpg')} url="https://twitter.com/arth_rob" />
           </li>
           <li className="Team-person">
-            <Person job="Designer" firstname="Sophie" lastname="Broche" image={require('../../../assets/imgs/team/sophie_broche.jpg')} />
+            <Person job="Designer" firstname="Sophie" lastname="Broche" image={require('../../../assets/imgs/team/sophie_broche.jpg')} url="https://twitter.com/SophieBroche" />
           </li>
           <li className="Team-person">
-            <Person job="Développeur" firstname="Jérémie" lastname="Boulay" image={require('../../../assets/imgs/team/jeremie_boulay.jpg')} />
+            <Person job="Développeur" firstname="Jérémie" lastname="Boulay" image={require('../../../assets/imgs/team/jeremie_boulay.jpg')} url="http://jeremieboulay.fr" />
           </li>
           <li className="Team-person">
-            <Person job="Développeur" firstname="Chloé" lastname="Henaut" image={require('../../../assets/imgs/team/chloe_henaut.jpg')} />
+            <Person job="Développeur" firstname="Chloé" lastname="Henaut" image={require('../../../assets/imgs/team/chloe_henaut.jpg')} url="http://notpretty.fr/" />
           </li>
         </ul>
       </section>

@@ -6,7 +6,7 @@ export default class _Person extends Component {
 
   render() {
     return (
-      <div className="Person">
+      <div className="Person" onClick={() => {window.open(this.props.url, '_blank').focus();}} >
         <div className="Person-capsule">
           <img className="Person-image"
             src={this.props.image}
@@ -27,4 +27,5 @@ _Person.propTypes = {
   firstname: React.PropTypes.string,
   lastname: React.PropTypes.string,
   job: React.PropTypes.string,
+  url: React.PropTypes.string,
 };
