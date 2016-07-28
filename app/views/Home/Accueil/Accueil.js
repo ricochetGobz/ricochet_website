@@ -17,7 +17,7 @@ export default class Accueil extends _Section {
   }
 
   componentDidMount() {
-    this._scrollIndicatorAnimation = new TweenLite(this.refs.scrollIndicator, 0.5, {
+    this._scrollIndicatorAnimation = new TweenLite(this.refs.scrollIndicator, 0.7, {
       ease: Power3.easeOut,
       paused: true,
       opacity: 1,

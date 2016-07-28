@@ -34,7 +34,7 @@ export default class Team extends _Section {
         onComplete: ((pill) => () => {
           pill.style.transform = '';
         })(this._pills[i]),
-      }, '-=0.55');
+      }, '-=0.5');
     }
   }
 
