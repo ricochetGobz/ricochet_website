@@ -12,6 +12,7 @@ export default class Accueil extends _Section {
     super(props);
 
     this._showLogo = true;
+    this._logoShowed = true;
     this._scrollIndicatorAnimation = null;
   }
 
@@ -25,11 +26,12 @@ export default class Accueil extends _Section {
   }
 
   _toggle() {
+    this._logoShowed = !this._logoShowed;
     super._toggle();
   }
 
   _open() {
-    this._scrollIndicatorAnimation.play();
+    if (this._logoShowed) this._scrollIndicatorAnimation.play();
   }
 
   _close() {
