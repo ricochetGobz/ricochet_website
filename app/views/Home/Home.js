@@ -32,6 +32,7 @@ export default class Layout extends Component {
     this._onScroll = this._onScroll.bind(this);
     this._changeView = this._changeView.bind(this);
     this._resizeView = this._resizeView.bind(this);
+    this._onAutoScrollEndded = this._onAutoScrollEndded.bind(this);
   }
 
   componentDidMount() {
@@ -57,10 +58,17 @@ export default class Layout extends Component {
     this._scrolling = true;
     this.setState({ currentView: nextView });
     TweenLite.to(this.refs.home, 1.5, {
-      onComplete: () => { this._scrolling = false; },
-      scrollTo: { y: nextView * this.state.height },
       ease: Power3.easeOut,
+      scrollTo: {
+        y: nextView * this.state.height,
+        onAutoKill: this._onAutoScrollEndded,
+      },
+      onComplete: this._onAutoScrollEndded,
     });
+  }
+
+  _onAutoScrollEndded() {
+    this._scrolling = false;
   }
 
   render() {
