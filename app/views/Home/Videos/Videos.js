@@ -15,6 +15,7 @@ export default class Videos extends _Section {
     };
 
     this._onTitleShowed = this._onTitleShowed.bind(this);
+    this._onVimeoError = this._onVimeoError.bind(this);
   }
 
   _open() {
@@ -31,11 +32,15 @@ export default class Videos extends _Section {
     }
   }
 
+  _onVimeoError(err) {
+    console.log(`React-vimeo.render ${err}`);
+  }
+
   render() {
     return (
       <section className="Home-section Videos" style={this.props.style}>
         <_Title _className="Videos-title" openned={this.state.openned} onAnimationEnded={this._onTitleShowed}>{'Teaser'}</_Title>
-        <Vimeo videoId={176291464} onError={(err) => {console.log(err);}} />,
+        <Vimeo videoId={176291464} onError={this._onVimeoError} />,
       </section>
     );
   }

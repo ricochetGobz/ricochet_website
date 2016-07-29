@@ -2,4 +2,26 @@
 @import '../../../style/variables';
 @import '../../../style/mixins';
 
-.Video {}
+videoWidth = 800px;
+videoHeight = ((videoWidth * 56.25) / 100);
+
+.Videos {
+  position: relative;
+
+
+  &-title {
+    centerY();
+    top: 40%;
+    left: -(_margin * 2);
+    z-index: 1;
+  }
+
+  // HACK react-vimeo
+  & .vimeo {
+    center();
+    width: videoWidth;
+    height: videoHeight;
+    padding: 0;
+  }
+
+}
