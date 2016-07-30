@@ -41,7 +41,6 @@ export default class Project extends _Section {
 
     let i;
     const paragraphs = document.getElementsByClassName('Project-paragraph');
-    this._paragraphAnimation.from(this.refs.subtitle, 0.5, { ease: Power2.easeOut, opacity: 0, transform: 'translateX(-16px)' });
     for (i = 0; i < paragraphs.length; i++) {
       this._paragraphAnimation.from(paragraphs[i], 0.5, { ease: Power2.easeOut, opacity: 0, transform: 'translateX(-16px)' }, '-=0.4');
     }
@@ -123,7 +122,7 @@ export default class Project extends _Section {
         <div className="Project-column Project-column_right">
           <p className="Project-titleHead" ref="titleHead" >le projet</p>
           <_Title _className="Project-title" openned={this.state.openned} onAnimationEnded={this._onTitleShowed} >Ricochet</_Title>
-          <p ref="subtitle" className="Project-subtitle">Une musique insonore</p>
+          <p className="Project-paragraph Project-subtitle">Une musique insonore</p>
           <p className="Project-paragraph"> Nous n’avons pas pour objectif de faire
             à nouveau entendre les personnes sourdes/malentendantes,
             de leur faire retrouver l’ouïe, de retrouver un sens perdu.

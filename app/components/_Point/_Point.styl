@@ -43,9 +43,11 @@ echoSize2 = _margin * 2.6;
       right: -(echoSize * 0.5);
       bottom: -(echoSize * 0.5);
       circle(echoSize);
+      border: 1px solid lineColor;
 
       &:after {
         circle(echoSize2);
+        border: 1px solid lineColor;
       }
     }
   }
@@ -69,7 +71,6 @@ echoSize2 = _margin * 2.6;
     right: 0;
     bottom: 0;
     circle(0);
-    border: 1px solid lineColor;
     transition: 0.5s;
     pointer-events: none;
 
@@ -78,7 +79,6 @@ echoSize2 = _margin * 2.6;
       display: block;
       center();
       circle(0);
-      border: 1px solid lineColor;
       transition: 0.4s;
     }
   }
