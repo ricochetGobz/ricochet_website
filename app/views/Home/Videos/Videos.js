@@ -2,7 +2,7 @@ import React from 'react';
 import Vimeo from 'react-vimeo';
 
 import _Section from '../../../components/_Section/_Section';
-import _Title from '../../../components/_Title/_Title';
+import _Paragraph from '../../../components/_Paragraph/_Paragraph';
 
 import './Videos.styl';
 
@@ -14,7 +14,7 @@ export default class Videos extends _Section {
       openned: false,
     };
 
-    this._onTitleShowed = this._onTitleShowed.bind(this);
+    this._onParagraphShowed = this._onParagraphShowed.bind(this);
     this._onVimeoError = this._onVimeoError.bind(this);
   }
 
@@ -26,7 +26,7 @@ export default class Videos extends _Section {
     this.setState({ openned: false });
   }
 
-  _onTitleShowed() {
+  _onParagraphShowed() {
     if (this.state.openned) {
       // Closed animation
     }
@@ -39,7 +39,17 @@ export default class Videos extends _Section {
   render() {
     return (
       <section className="Home-section Videos" style={this.props.style}>
-        <_Title _className="Videos-title" openned={this.state.openned} onAnimationEnded={this._onTitleShowed}>{'Teaser'}</_Title>
+        <_Paragraph
+          title="Teaser"
+          _className="Videos-paragraph"
+          openned={this.state.openned}
+          onAnimationEnded={this._onParagraphShowed}
+        >
+          <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Asperiores eum, magnam rerum ipsam, maiores dolorem nisi, ipsum quos,
+           reprehenderit dolores iste! Earum delectus doloribus exercitationem,
+           asperiores molestias vitae numquam voluptas.</p>
+        </_Paragraph>
         <Vimeo videoId={176291464} onError={this._onVimeoError} />,
       </section>
     );

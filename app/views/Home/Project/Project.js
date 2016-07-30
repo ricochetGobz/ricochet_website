@@ -5,7 +5,7 @@ import SpritePlayer from '../../../core/SpritePlayer';
 import TextAnimation from '../../../core/TextAnimation/TextAnimation';
 
 import _Section from '../../../components/_Section/_Section';
-import _Title from '../../../components/_Title/_Title';
+import _Paragraph from '../../../components/_Paragraph/_Paragraph';
 import Cube from '../../../components/Cube/Cube';
 
 import './Project.styl';
@@ -16,7 +16,6 @@ export default class Project extends _Section {
     super(props);
 
     this._rotationStarted = false;
-    this._paragraphAnimation = new TimelineLite();
     this._titleHeadAnimation = false;
     this._notesSprite = [];
 
@@ -28,7 +27,7 @@ export default class Project extends _Section {
     };
 
     this._loadSprite = this._loadSprite.bind(this);
-    this._onTitleShowed = this._onTitleShowed.bind(this);
+    this._onParagraphShowed = this._onParagraphShowed.bind(this);
   }
 
   componentDidMount() {
@@ -38,13 +37,6 @@ export default class Project extends _Section {
     this._titleHeadAnimation.addEffectForEachLetter(
       (animationsArray) => animationsArray[utils.getRandomInt(1, animationsArray.length - 1)]
     );
-
-    let i;
-    const paragraphs = document.getElementsByClassName('Project-paragraph');
-    for (i = 0; i < paragraphs.length; i++) {
-      this._paragraphAnimation.from(paragraphs[i], 0.5, { ease: Power2.easeOut, opacity: 0, transform: 'translateX(-16px)' }, '-=0.4');
-    }
-    this._paragraphAnimation.reverse();
 
     this._loadSprites();
   }
@@ -61,16 +53,14 @@ export default class Project extends _Section {
     // this._notesSprite[this.state.lastFace].player.play();
   }
 
-  _onTitleShowed() {
+  _onParagraphShowed() {
     if (this.state.openned) {
-      // Show text
-      this._paragraphAnimation.play();
+      // Next
     }
   }
 
   _close() {
     if (this.state.openned) {
-      this._paragraphAnimation.reverse();
       this._titleHeadAnimation.hide();
       this.setState({ openned: false, face: -1, startRotation: false });
     }
@@ -121,18 +111,23 @@ export default class Project extends _Section {
         </div>
         <div className="Project-column Project-column_right">
           <p className="Project-titleHead" ref="titleHead" >le projet</p>
-          <_Title _className="Project-title" openned={this.state.openned} onAnimationEnded={this._onTitleShowed} >Ricochet</_Title>
-          <p className="Project-paragraph Project-subtitle">Une musique insonore</p>
-          <p className="Project-paragraph"> Nous n’avons pas pour objectif de faire
-            à nouveau entendre les personnes sourdes/malentendantes,
-            de leur faire retrouver l’ouïe, de retrouver un sens perdu.
-          </p>
-          <p className="Project-paragraph">
-            Notre projet, au contraire souhaite s’appuyer sur tout les autres
-            sens et sur un dispositif collaboratif afin de faire découvrir
-            la musique autrement (autant aux sourds qu’aux personnes ordinaires ).
-            Cette expérience a pour but de faire découvrir et partager.
-          </p>
+          <_Paragraph
+            title="Ricochet"
+            openned={this.state.openned}
+            onAnimationEnded={this._onParagraphShowed}
+          >
+            <p className="Project-subtitle">Une musique insonore</p>
+            <p> Nous n’avons pas pour objectif de faire
+              à nouveau entendre les personnes sourdes/malentendantes,
+              de leur faire retrouver l’ouïe, de retrouver un sens perdu.
+            </p>
+            <p>
+              Notre projet, au contraire souhaite s’appuyer sur tout les autres
+              sens et sur un dispositif collaboratif afin de faire découvrir
+              la musique autrement (autant aux sourds qu’aux personnes ordinaires ).
+              Cette expérience a pour but de faire découvrir et partager.
+            </p>
+          </_Paragraph>
         </div>
       </section>
     );

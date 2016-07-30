@@ -4,15 +4,17 @@
 
 videoWidth = 800px;
 videoHeight = ((videoWidth * 56.25) / 100);
+paragraphWidth = videoWidth / 2.5;
 
 .Videos {
   position: relative;
 
 
-  &-title {
+  &-paragraph {
     centerY();
-    top: 40%;
-    left: -(_margin * 2);
+    top: 43%;
+    left: -(paragraphWidth * 0.5);
+    width: paragraphWidth;
     z-index: 1;
   }
 

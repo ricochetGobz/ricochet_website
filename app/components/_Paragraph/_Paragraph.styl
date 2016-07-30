@@ -1,0 +1,15 @@
+@import '../../style/variables';
+@import '../../style/mixins';
+
+.Paragraph {
+  &-paragraph {
+    text-align: justify;
+    margin-bottom: _margin;
+
+  }
+
+  & > p:nth-child(2) {
+    margin-top: _margin * 2;
+    text-indent: _margin;
+  }
+}
