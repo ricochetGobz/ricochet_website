@@ -116,12 +116,12 @@ export default class Project extends _Section {
             openned={this.state.openned}
             onAnimationEnded={this._onParagraphShowed}
           >
-            <p className="Project-subtitle">Une musique insonore</p>
-            <p> Nous n’avons pas pour objectif de faire
+            <p className="_hidden_mobile Project-subtitle">Une musique insonore</p>
+            <p className="_hidden_mobile"> Nous n’avons pas pour objectif de faire
               à nouveau entendre les personnes sourdes/malentendantes,
               de leur faire retrouver l’ouïe, de retrouver un sens perdu.
             </p>
-            <p>
+            <p className="_hidden_mobile">
               Notre projet, au contraire souhaite s’appuyer sur tout les autres
               sens et sur un dispositif collaboratif afin de faire découvrir
               la musique autrement (autant aux sourds qu’aux personnes ordinaires ).

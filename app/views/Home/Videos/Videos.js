@@ -45,7 +45,7 @@ export default class Videos extends _Section {
           openned={this.state.openned}
           onAnimationEnded={this._onParagraphShowed}
         >
-          <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          <p className="_hidden_mobile"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           Asperiores eum, magnam rerum ipsam, maiores dolorem nisi, ipsum quos,
            reprehenderit dolores iste! Earum delectus doloribus exercitationem,
            asperiores molestias vitae numquam voluptas.</p>
