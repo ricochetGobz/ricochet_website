@@ -9,7 +9,6 @@ paragraphWidth = videoWidth / 2.5;
 .Videos {
   position: relative;
 
-
   &-paragraph {
     centerY();
     top: 43%;
@@ -27,12 +26,10 @@ paragraphWidth = videoWidth / 2.5;
     }
   }
 
-  // HACK react-vimeo
-  & .vimeo {
+  &-video {
     center();
     width: videoWidth;
     height: videoHeight;
-    padding: 0;
 
     +mobile() {
       width: 100%;
@@ -40,7 +37,4 @@ paragraphWidth = videoWidth / 2.5;
       padding-bottom: 56.25%;
     }
   }
-
-
-
 }

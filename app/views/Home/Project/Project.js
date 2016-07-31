@@ -17,6 +17,7 @@ export default class Project extends _Section {
 
     this._rotationStarted = false;
     this._titleHeadAnimation = false;
+    this._cubeAnimation = new TimelineLite();
     this._notesSprite = [];
 
     this.state = {
@@ -32,7 +33,7 @@ export default class Project extends _Section {
 
   componentDidMount() {
     super.componentDidMount();
-
+    this._cubeAnimation.from(this.refs.cube, 0.7, { opacity: 0 }, '+=1.5');
     this._titleHeadAnimation = new TextAnimation(this.refs.titleHead, 50);
     this._titleHeadAnimation.addEffectForEachLetter(
       (animationsArray) => animationsArray[utils.getRandomInt(1, animationsArray.length - 1)]
@@ -47,6 +48,7 @@ export default class Project extends _Section {
   }
 
   _open() {
+    this._cubeAnimation.play();
     this._titleHeadAnimation.show(() => {
       this.setState({ openned: true, face: this.state.lastFace, startRotation: true });
     });
@@ -55,7 +57,7 @@ export default class Project extends _Section {
 
   _onParagraphShowed() {
     if (this.state.openned) {
-      // Next
+      // NEXT
     }
   }
 
@@ -63,6 +65,7 @@ export default class Project extends _Section {
     if (this.state.openned) {
       this._titleHeadAnimation.hide();
       this.setState({ openned: false, face: -1, startRotation: false });
+      this._cubeAnimation.reverse();
     }
   }
 
@@ -103,7 +106,7 @@ export default class Project extends _Section {
   render() {
     return (
       <section ref="project" className="Home-section Project" style={this.props.style}>
-        <div className="Project-column Project-column_left">
+        <div ref="cube" className="Project-column Project-column_left">
           <canvas ref="notes" className="Project-notes" />
           <div className="Project-column Project-column_left Project-cube">
             <Cube face={this.state.face} />

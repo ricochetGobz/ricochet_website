@@ -10,6 +10,8 @@ export default class Videos extends _Section {
   constructor(props) {
     super(props);
 
+    this._videoAnimation = new TimelineLite();
+
     this.state = {
       openned: false,
     };
@@ -19,10 +21,12 @@ export default class Videos extends _Section {
   }
 
   _open() {
+    this._videoAnimation.play();
     this.setState({ openned: true });
   }
 
   _close() {
+    this._videoAnimation.reverse();
     this.setState({ openned: false });
   }
 
@@ -32,8 +36,12 @@ export default class Videos extends _Section {
     }
   }
 
+  componentDidMount() {
+    this._videoAnimation.from(this.refs.video, 0.7, { opacity: 0 }, '+=1');
+  }
+
   _onVimeoError(err) {
-    console.log(`React-vimeo.render ${err}`);
+    console.log(`React-vimeo.render() : ${err}`);
   }
 
   render() {
@@ -50,7 +58,9 @@ export default class Videos extends _Section {
            reprehenderit dolores iste! Earum delectus doloribus exercitationem,
            asperiores molestias vitae numquam voluptas.</p>
         </_Paragraph>
-        <Vimeo videoId={176291464} onError={this._onVimeoError} />,
+        <div ref="video" className="Videos-video">
+          <Vimeo videoId={176291464} onError={this._onVimeoError} />,
+        </div>
       </section>
     );
   }
