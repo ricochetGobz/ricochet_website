@@ -21,32 +21,36 @@ export default class Layout extends Component {
 
     this._loop = this._loop.bind(this);
     this._onPatternLoaded = this._onPatternLoaded.bind(this);
+    this._resizeCanvas = this._resizeCanvas.bind(this);
   }
 
   componentDidMount() {
     this._canvas = this.refs.background;
     this._context = this._canvas.getContext('2d');
-    this._context.canvas.width = window.innerWidth;
-    this._context.canvas.height = window.innerHeight;
 
     this._pattern.onload = this._onPatternLoaded;
     this._pattern.src = patternUrl;
 
+    window.addEventListener('resize', this._resizeCanvas);
     document.body.addEventListener('click', (e) => this._shapesFactory.createRandomShape(e.x, e.y));
 
     this._shapesFactory.popShapes(4);
   }
 
+  _resizeCanvas() {
+    this._context.canvas.width = window.innerWidth;
+    this._context.canvas.height = window.innerHeight;
+    this._nbrImageWidth = Math.ceil(this._context.canvas.width / this._pattern.width) + 1;
+    this._nbrImageHeight = Math.ceil(this._context.canvas.height / this._pattern.height) + 1;
+  }
+
   _onPatternLoaded() {
     this._ratio = this._pattern.height / this._pattern.width;
-    this._nbrImageWidth = Math.ceil(this._canvas.width / this._pattern.width) + 1;
-    this._nbrImageHeight = Math.ceil(this._canvas.height / this._pattern.height) + 1;
+    this._resizeCanvas();
     this._loop();
   }
 
   _loop() {
-    this._context.canvas.width = window.innerWidth;
-    this._context.canvas.height = window.innerHeight;
     this._context.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
     let i, j;
