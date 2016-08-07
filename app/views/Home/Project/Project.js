@@ -6,6 +6,7 @@ import TextAnimation from '../../../core/TextAnimation/TextAnimation';
 
 import _Section from '../../../components/_Section/_Section';
 import _Paragraph from '../../../components/_Paragraph/_Paragraph';
+import _Parallax from '../../../components/_Parallax.temp/_Parallax.temp';
 import Cube from '../../../components/Cube/Cube';
 
 import './Project.styl';
@@ -33,7 +34,7 @@ export default class Project extends _Section {
 
   componentDidMount() {
     super.componentDidMount();
-    this._cubeAnimation.from(this.refs.cube, 0.7, { opacity: 0 }, '+=1.5');
+    // this._cubeAnimation.from(this.refs.cube, 0.7, { opacity: 0 }, '+=1.5');
     this._titleHeadAnimation = new TextAnimation(this.refs.titleHead, 50);
     this._titleHeadAnimation.addEffectForEachLetter(
       (animationsArray) => animationsArray[utils.getRandomInt(1, animationsArray.length - 1)]
@@ -48,7 +49,7 @@ export default class Project extends _Section {
   }
 
   _open() {
-    this._cubeAnimation.play();
+    // this._cubeAnimation.play();
     this._titleHeadAnimation.show(() => {
       this.setState({ openned: true, face: this.state.lastFace, startRotation: true });
     });
@@ -65,7 +66,7 @@ export default class Project extends _Section {
     if (this.state.openned) {
       this._titleHeadAnimation.hide();
       this.setState({ openned: false, face: -1, startRotation: false });
-      this._cubeAnimation.reverse();
+      // this._cubeAnimation.reverse();
     }
   }
 
@@ -106,11 +107,18 @@ export default class Project extends _Section {
   render() {
     return (
       <section ref="project" className="Home-section Project" style={this.props.style}>
-        <div ref="cube" className="Project-column Project-column_left">
-          <canvas ref="notes" className="Project-notes" />
-          <div className="Project-column Project-column_left Project-cube">
-            <Cube face={this.state.face} />
-          </div>
+        <div ref="cube" className="Project-column Project-column_left _foreground">
+          <_Parallax
+            speed={2}
+            width="160px"
+            top={`${super._getPosYWithPurcent(165)}px`}
+            scrollTop={this.props.scrollTop}
+          >
+            <canvas ref="notes" className="Project-notes" />
+            <div className="Project-cube">
+              <Cube face={this.state.face} />
+            </div>
+          </_Parallax>
         </div>
         <div className="Project-column Project-column_right">
           <p className="Project-titleHead" ref="titleHead" >le projet</p>
