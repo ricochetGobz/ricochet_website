@@ -64,8 +64,8 @@ export default class Project extends _Section {
 
   _close() {
     if (this.state.openned) {
-      this._titleHeadAnimation.hide();
-      this.setState({ openned: false, face: -1, startRotation: false });
+      //this._titleHeadAnimation.hide();
+      // this.setState({ openned: false, face: -1, startRotation: false });
       // this._cubeAnimation.reverse();
     }
   }
@@ -107,38 +107,38 @@ export default class Project extends _Section {
   render() {
     return (
       <section ref="project" className="Home-section Project" style={this.props.style}>
-        <div ref="cube" className="Project-column Project-column_left _foreground">
-          <_Parallax
-            speed={2}
-            width="160px"
-            top={`${super._getPosYWithPurcent(165)}px`}
-            scrollTop={this.props.scrollTop}
-          >
-            <canvas ref="notes" className="Project-notes" />
-            <div className="Project-cube">
-              <Cube face={this.state.face} />
-            </div>
-          </_Parallax>
+        <div ref="cube" className="Project-column Project-column_left">
+        <canvas ref="notes" className="Project-notes" />
+          <div className="Project-cube">
+            <Cube face={this.state.face} />
+          </div>
         </div>
         <div className="Project-column Project-column_right">
-          <p className="Project-titleHead" ref="titleHead" >le projet</p>
-          <_Paragraph
-            title="Ricochet"
-            openned={this.state.openned}
-            onAnimationEnded={this._onParagraphShowed}
+          <_Parallax
+            speed={1.5}
+            width="350px"
+            top={`${super._getPosYWithPurcent(75)}px`}
+            scrollTop={this.props.scrollTop}
           >
-            <p className="_hidden_mobile Project-subtitle">Une musique insonore</p>
-            <p className="_hidden_mobile"> Nous n’avons pas pour objectif de faire
-              à nouveau entendre les personnes sourdes/malentendantes,
-              de leur faire retrouver l’ouïe, de retrouver un sens perdu.
-            </p>
-            <p className="_hidden_mobile">
-              Notre projet, au contraire souhaite s’appuyer sur tout les autres
-              sens et sur un dispositif collaboratif afin de faire découvrir
-              la musique autrement (autant aux sourds qu’aux personnes ordinaires ).
-              Cette expérience a pour but de faire découvrir et partager.
-            </p>
-          </_Paragraph>
+            <p className="Project-titleHead" ref="titleHead" >le projet</p>
+            <_Paragraph
+              title="Ricochet"
+              openned={this.state.openned}
+              onAnimationEnded={this._onParagraphShowed}
+            >
+              <p className="_hidden_mobile Project-subtitle">Une musique insonore</p>
+              <p className="_hidden_mobile"> Nous n’avons pas pour objectif de faire
+                à nouveau entendre les personnes sourdes/malentendantes,
+                de leur faire retrouver l’ouïe, de retrouver un sens perdu.
+              </p>
+              <p className="_hidden_mobile">
+                Notre projet, au contraire souhaite s’appuyer sur tout les autres
+                sens et sur un dispositif collaboratif afin de faire découvrir
+                la musique autrement (autant aux sourds qu’aux personnes ordinaires ).
+                Cette expérience a pour but de faire découvrir et partager.
+              </p>
+            </_Paragraph>
+          </_Parallax>
         </div>
       </section>
     );

@@ -14,18 +14,22 @@ export default class Logo extends Component {
 
     this._isShowed = false;
     this._spriteLoaded = false;
+    this._animationComplete = true;
 
-    this._showLogoAnimation = false;
-    this._hideLogoAnimation = false;
+    this._showAnimation = false;
+    this._hideAnimation = false;
 
-    this._checkLogoStatus = this._checkLogoStatus.bind(this);
+    this._show = this._show.bind(this);
+    this._hide = this._hide.bind(this);
+    this._checkStatus = this._checkStatus.bind(this);
     this._loadSprites = this._loadSprites.bind(this);
     this._onSpriteLoaded = this._onSpriteLoaded.bind(this);
+    this._onAnimationComplete = this._onAnimationComplete.bind(this);
   }
 
   componentDidMount() {
-    this._showLogoAnimation = new SpritePlayer(this.refs.logo);
-    this._hideLogoAnimation = new SpritePlayer(this.refs.logo);
+    this._showAnimation = new SpritePlayer(this.refs.logo);
+    this._hideAnimation = new SpritePlayer(this.refs.logo);
     this._loadSprites();
   }
 
@@ -35,37 +39,50 @@ export default class Logo extends Component {
       return;
     }
 
-    this._checkLogoStatus();
-  }
-
-  _checkLogoStatus() {
-    if (this.props.showLogo && !this._isShowed) {
-      this._hideLogoAnimation.stop();
-      this._showLogoAnimation.play({
-        onComplete: () => {
-          this._isShowed = true;
-          this.props.callbackLogoShowed();
-        },
-      });
-    } else if (!this.props.showLogo && this._isShowed) {
-      this._showLogoAnimation.stop();
-      this._hideLogoAnimation.play({
-        onComplete: () => {
-          this._isShowed = false;
-        },
-      });
+    if (this._animationComplete) {
+      this._checkStatus();
     }
   }
 
+  _checkStatus() {
+    if (this.props.showLogo && !this._isShowed) {
+      this._show();
+    } else if (!this.props.showLogo && this._isShowed) {
+      this._hide();
+    }
+  }
+
+  _show() {
+    this._animationComplete = false;
+    this._hideAnimation.stop();
+    this._showAnimation.play({
+      onComplete: () => { this._onAnimationComplete(true); },
+    });
+  }
+
+  _hide() {
+    this._animationComplete = false;
+    this._showAnimation.stop();
+    this._hideAnimation.play({
+      onComplete: () => { this._onAnimationComplete(false); },
+    });
+  }
+
   _loadSprites() {
-    this._showLogoAnimation.load(showLogoSpriteUrl, showLogoSpriteJson, () => {
-      this._hideLogoAnimation.load(hideLogoSpriteUrl, hideLogoSpriteJson, this._onSpriteLoaded);
+    this._showAnimation.load(showLogoSpriteUrl, showLogoSpriteJson, () => {
+      this._hideAnimation.load(hideLogoSpriteUrl, hideLogoSpriteJson, this._onSpriteLoaded);
     });
   }
 
   _onSpriteLoaded() {
     this._spriteLoaded = true;
-    if (this.props.showLogo) this._checkLogoStatus();
+    this._checkStatus();
+  }
+
+  _onAnimationComplete(showed) {
+    this._animationComplete = true;
+    this._isShowed = showed;
+    this.props.callbackLogo(showed);
   }
 
   render() {
@@ -81,5 +98,5 @@ export default class Logo extends Component {
 
 Logo.propTypes = {
   showLogo: React.PropTypes.bool,
-  callbackLogoShowed: React.PropTypes.func,
+  callbackLogo: React.PropTypes.func,
 };

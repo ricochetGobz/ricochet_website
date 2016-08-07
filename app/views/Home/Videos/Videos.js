@@ -27,8 +27,8 @@ export default class Videos extends _Section {
   }
 
   _close() {
-    this._videoAnimation.reverse();
-    this.setState({ openned: false });
+    // this._videoAnimation.reverse();
+    //this.setState({ openned: false });
   }
 
   _onParagraphShowed() {

@@ -13,8 +13,10 @@ export default class Accueil extends _Section {
     super(props);
 
     this._showLogo = true;
-    this._logoShowed = true;
+    this._logoShowed = false;
     this._scrollIndicatorAnimation = null;
+
+    this._onLogoCallback = this._onLogoCallback.bind(this);
   }
 
   componentDidMount() {
@@ -26,17 +28,17 @@ export default class Accueil extends _Section {
     });
   }
 
-  _toggle() {
-    this._logoShowed = !this._logoShowed;
-    super._toggle();
-  }
-
   _open() {
     if (this._logoShowed) this._scrollIndicatorAnimation.play();
   }
 
+  _onLogoCallback(showed) {
+    this._logoShowed = showed;
+    this._open();
+  }
+
   _close() {
-    this._scrollIndicatorAnimation.reverse();
+    // this._scrollIndicatorAnimation.reverse();
   }
 
   render() {
@@ -51,7 +53,7 @@ export default class Accueil extends _Section {
               <Logo
                 width={this.refs.logo}
                 showLogo={this._showLogo}
-                callbackLogoShowed={this._toggle}
+                callbackLogo={this._onLogoCallback}
               />
             </div>
           </_Parallax>

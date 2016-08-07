@@ -62,7 +62,7 @@ export default class Layout extends Component {
     this._scrolling = true;
     this.setState({ currentView: nextView });
     TweenLite.to(this.refs.home, 1.5, {
-      ease: Power3.easeOut,
+      ease: Power1.easeOut,
       scrollTo: {
         y: nextView * this.state.height,
         onAutoKill: this._onAutoScrollEndded,

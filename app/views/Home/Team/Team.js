@@ -38,6 +38,7 @@ export default class Team extends _Section {
         })(this._pills[i]),
       }, '-=0.55');
     }
+    this._pillAnimation.reverse();
   }
 
   _open() {
@@ -51,8 +52,8 @@ export default class Team extends _Section {
   }
 
   _close() {
-    this.setState({ openned: false });
-    this._pillAnimation.reverse();
+    // this.setState({ openned: false });
+    // this._pillAnimation.reverse();
   }
 
   render() {
