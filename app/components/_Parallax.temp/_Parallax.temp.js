@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
+import './_Parallax.temp.styl';
+
 export default class ParallaxComponent extends Component {
 
   constructor(props) {
     super(props);
 
     this._style = {
-      position: 'fixed',
       width: this.props.width,
       height: this.props.height,
       left: this.props.left,
@@ -51,7 +52,7 @@ export default class ParallaxComponent extends Component {
     this._style.right = this.props.right;
 
     return (
-      <div ref="parallaxElement" style={this._style}>
+      <div ref="parallaxElement" className="Parallax" style={this._style}>
           {this.props.children}
       </div>
     );

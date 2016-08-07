@@ -3,6 +3,7 @@ import Vimeo from 'react-vimeo';
 
 import _Section from '../../../components/_Section/_Section';
 import _Paragraph from '../../../components/_Paragraph/_Paragraph';
+import _Parallax from '../../../components/_Parallax.temp/_Parallax.temp';
 
 import './Videos.styl';
 
@@ -47,17 +48,23 @@ export default class Videos extends _Section {
   render() {
     return (
       <section className="Home-section Videos" style={this.props.style}>
-        <_Paragraph
-          title="Teaser"
-          _className="Videos-paragraph"
-          openned={this.state.openned}
-          onAnimationEnded={this._onParagraphShowed}
+        <_Parallax
+          speed={1.5}
+          top={`${super._getPosYWithPurcent(140)}px`}
+          scrollTop={this.props.scrollTop}
         >
+          <_Paragraph
+            title="Teaser"
+            _className="Videos-paragraph"
+            openned={this.state.openned}
+            onAnimationEnded={this._onParagraphShowed}
+          >
           <p className="_hidden_mobile"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           Asperiores eum, magnam rerum ipsam, maiores dolorem nisi, ipsum quos,
-           reprehenderit dolores iste! Earum delectus doloribus exercitationem,
-           asperiores molestias vitae numquam voluptas.</p>
-        </_Paragraph>
+          reprehenderit dolores iste! Earum delectus doloribus exercitationem,
+          asperiores molestias vitae numquam voluptas.</p>
+          </_Paragraph>
+        </_Parallax>
         <div ref="video" className="Videos-video">
           <Vimeo videoId={176291464} onError={this._onVimeoError} />,
         </div>
