@@ -2,6 +2,7 @@ import React from 'react';
 import TweenLite from 'gsap';
 
 import _Section from '../../../components/_Section/_Section';
+import _Parallax from '../../../components/_Parallax.temp/_Parallax.temp';
 import Logo from '../../../components/Logo/Logo';
 
 import './Accueil.styl';
@@ -41,13 +42,20 @@ export default class Accueil extends _Section {
   render() {
     return (
       <section className="Home-section Accueil" style={this.props.style}>
-          <div ref="logo" className="Accueil-logo">
-            <Logo
-              width={this.refs.logo}
-              showLogo={this._showLogo}
-              callbackLogoShowed={this._toggle}
-            />
-          </div>
+          <_Parallax
+            speed={0.6}
+            top={`${super._getPosYWithPurcent(50)}px`}
+            scrollTop={this.props.scrollTop}
+          >
+            <div ref="logo" className="Accueil-logo">
+              <Logo
+                width={this.refs.logo}
+                showLogo={this._showLogo}
+                callbackLogoShowed={this._toggle}
+              />
+            </div>
+          </_Parallax>
+
           <div ref="scrollIndicator" className="Accueil-scrollIndicator">
             <div className="Accueil-mouse"></div>
             <div className="Accueil-arrowDown"></div>

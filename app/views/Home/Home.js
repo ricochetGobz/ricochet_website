@@ -48,10 +48,14 @@ export default class Layout extends Component {
   }
 
   _onScroll() {
-    const currentView = parseInt((this.refs.home.scrollTop / this.state.height) + 0.55, 10);
-    if (currentView !== this.state.currentView && currentView < this.state.views.length && !this._scrolling) {
-      this.setState({ currentView });
-    }
+    const scrollTop = this.refs.home.scrollTop;
+    const _currentView = parseInt((scrollTop / this.state.height) + 0.55, 10);
+    const currentView = (_currentView !== this.state.currentView && _currentView < this.state.views.length && !this._scrolling)
+      ? _currentView
+      : this.state.currentView
+    ;
+
+    this.setState({ scrollTop, currentView });
   }
 
   _changeView(nextView) {
@@ -73,6 +77,8 @@ export default class Layout extends Component {
 
   render() {
     const style = { height: `${this.state.height}px` };
+
+    // TODO
     // DOESN T WORK
     // {this.state.views.map((view, key) => {
     //   view.elm.props.style = this.state.style;
@@ -83,10 +89,10 @@ export default class Layout extends Component {
 
     return (
       <div ref="home" className="Home">
-        <Accueil style={style} openned={(this.state.currentView === 0)} />
-        <Project style={style} openned={(this.state.currentView === 1)} />
-        <Videos style={style} openned={(this.state.currentView === 2)} />
-        <Team style={style} openned={(this.state.currentView === 3)} />
+        <Accueil id={0} style={style} height={this.state.height} scrollTop={this.state.scrollTop} openned={(this.state.currentView === 0)} />
+        <Project id={1} style={style} height={this.state.height} scrollTop={this.state.scrollTop} openned={(this.state.currentView === 1)} />
+        <Videos id={2} style={style} height={this.state.height} scrollTop={this.state.scrollTop} openned={(this.state.currentView === 2)} />
+        <Team id={3} style={style} height={this.state.height} scrollTop={this.state.scrollTop} openned={(this.state.currentView === 3)} />
         <Slider views={this.state.views} currentView={this.state.currentView} changeView={this._changeView} />
       </div>
     );

@@ -25,6 +25,7 @@
     "gsap": "^1.18.5",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
+    "react-parallax-component": "https://github.com/Jeremboo/react-parallax-component/tarball/529d9aa82d1c034d3f0c0bd4430ee8b23b64769d",
     "react-router": "^2.0.0",
     "react-vimeo": "^0.2.0"
   },
