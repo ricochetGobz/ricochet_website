@@ -42,6 +42,10 @@ export default class _Section extends Component {
     console.warn('_close is not impremented by the child');
   }
 
+  _getStyle() {
+    return { height: `${this.props.height}px` };
+  }
+
   _getPosYWithPurcent(purcent) {
     return (this.props.id * this.props.height) + ((this.props.height * purcent) / 100);
   }

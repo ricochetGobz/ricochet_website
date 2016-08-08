@@ -64,7 +64,7 @@ export default class Project extends _Section {
 
   _close() {
     if (this.state.openned) {
-      //this._titleHeadAnimation.hide();
+      // this._titleHeadAnimation.hide();
       // this.setState({ openned: false, face: -1, startRotation: false });
       // this._cubeAnimation.reverse();
     }
@@ -106,7 +106,7 @@ export default class Project extends _Section {
 
   render() {
     return (
-      <section ref="project" className="Home-section Project" style={this.props.style}>
+      <section ref="project" className="Home-section Project" style={super._getStyle()}>
         <div ref="cube" className="Project-column Project-column_left">
         <canvas ref="notes" className="Project-notes" />
           <div className="Project-cube">

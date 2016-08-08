@@ -58,7 +58,7 @@ export default class Team extends _Section {
 
   render() {
     return (
-      <section ref="team" className="Home-section Team" style={this.props.style}>
+      <section ref="team" className="Home-section Team" style={super._getStyle()}>
         <_Parallax
           speed={0.5}
           top={`${super._getPosYWithPurcent(-125)}px`}

@@ -20,6 +20,7 @@ export default class Layout extends Component {
 
     this.state = {
       currentView: 0,
+      scrollTop: 0,
       height: window.innerHeight,
       views: [
         { name: 'Accueil', elm: <Accueil /> },
@@ -76,23 +77,20 @@ export default class Layout extends Component {
   }
 
   render() {
-    const style = { height: `${this.state.height}px` };
-
-    // TODO
-    // DOESN T WORK
-    // {this.state.views.map((view, key) => {
-    //   view.elm.props.style = this.state.style;
-    //   view.elm.props.openned = (this.state.currentView === key);
-    //   // view.elm.props.changeView = this.state.style;
-    //   return view.elm;
-    // })}
+    // Create an array woth each array view
+    const views = this.state.views.map((view, key) =>
+      React.cloneElement(view.elm, {
+        key,
+        id: key,
+        height: this.state.height,
+        scrollTop: this.state.scrollTop,
+        openned: this.state.currentView === key,
+      })
+    );
 
     return (
       <div ref="home" className="Home">
-        <Accueil id={0} style={style} height={this.state.height} scrollTop={this.state.scrollTop} openned={(this.state.currentView === 0)} />
-        <Project id={1} style={style} height={this.state.height} scrollTop={this.state.scrollTop} openned={(this.state.currentView === 1)} />
-        <Videos id={2} style={style} height={this.state.height} scrollTop={this.state.scrollTop} openned={(this.state.currentView === 2)} />
-        <Team id={3} style={style} height={this.state.height} scrollTop={this.state.scrollTop} openned={(this.state.currentView === 3)} />
+        {views}
         <Slider views={this.state.views} currentView={this.state.currentView} changeView={this._changeView} />
       </div>
     );

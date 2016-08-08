@@ -47,7 +47,7 @@ export default class Videos extends _Section {
 
   render() {
     return (
-      <section className="Home-section Videos" style={this.props.style}>
+      <section className="Home-section Videos" style={super._getStyle()}>
         <_Parallax
           speed={1.5}
           top={`${super._getPosYWithPurcent(140)}px`}

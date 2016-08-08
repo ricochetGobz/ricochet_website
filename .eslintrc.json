@@ -4,8 +4,9 @@
   "globals": {
     "app": true,
     "TimelineLite": true,
-    "Power3": true,
-    "Power2": true
+    "Power1": true,
+    "Power2": true,
+    "Power3": true
   },
 
   "rules": {}

@@ -43,7 +43,7 @@ export default class Accueil extends _Section {
 
   render() {
     return (
-      <section className="Home-section Accueil" style={this.props.style}>
+      <section className="Home-section Accueil" style={super._getStyle()}>
           <_Parallax
             speed={0.6}
             top={`${super._getPosYWithPurcent(50)}px`}
@@ -68,6 +68,5 @@ export default class Accueil extends _Section {
 }
 
 Accueil.propTypes = {
-  style: React.PropTypes.object,
   openned: React.PropTypes.bool,
 };
