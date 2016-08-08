@@ -28,7 +28,7 @@ export default class Videos extends _Section {
 
   _close() {
     // this._videoAnimation.reverse();
-    //this.setState({ openned: false });
+    // this.setState({ openned: false });
   }
 
   _onParagraphShowed() {
@@ -66,7 +66,7 @@ export default class Videos extends _Section {
           </_Paragraph>
         </_Parallax>
         <div ref="video" className="Videos-video">
-          <Vimeo videoId={176291464} onError={this._onVimeoError} />,
+          <Vimeo videoId="176291464" onError={this._onVimeoError} />,
         </div>
       </section>
     );

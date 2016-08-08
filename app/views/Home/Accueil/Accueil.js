@@ -49,9 +49,8 @@ export default class Accueil extends _Section {
             top={`${super._getPosYWithPurcent(50)}px`}
             scrollTop={this.props.scrollTop}
           >
-            <div ref="logo" className="Accueil-logo">
+            <div className="Accueil-logo">
               <Logo
-                width={this.refs.logo}
                 showLogo={this._showLogo}
                 callbackLogo={this._onLogoCallback}
               />

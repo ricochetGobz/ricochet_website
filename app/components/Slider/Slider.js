@@ -49,7 +49,7 @@ export default class Slider extends Component {
 }
 
 Slider.propTypes = {
-  views: React.PropTypes.object,
+  views: React.PropTypes.array,
   currentView: React.PropTypes.number,
   changeView: React.PropTypes.func,
 };

@@ -60,14 +60,17 @@ export default class ParallaxComponent extends Component {
 }
 
 ParallaxComponent.propTypes = {
-  children: React.PropTypes.object,
+  children: React.PropTypes.oneOfType([
+    React.PropTypes.element,
+    React.PropTypes.array,
+  ]),
   speed: React.PropTypes.number,
   scrollTop: React.PropTypes.number,
   // Style
   width: React.PropTypes.string,
   height: React.PropTypes.string,
   top: React.PropTypes.string,
-  left: React.PropTypes.number,
+  left: React.PropTypes.string,
   right: React.PropTypes.string,
 };
 

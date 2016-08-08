@@ -48,12 +48,9 @@ export default class Paragraph extends _Section {
   }
 
   render() {
-    let i;
-    const paragraphs = (this.props.children.length) ? this.props.children : [this.props.children];
-
-    for (i = 0; i < paragraphs.length; i++) {
-      paragraphs[i].props.className = `${paragraphs[i].props.className ? paragraphs[i].props.className : ''} Paragraph-paragraph`;
-    }
+    const paragraphs = React.Children.map(this.props.children,
+      (child) => React.cloneElement(child, { className: `${child.props.className} Paragraph-paragraph` })
+    );
 
     return (
       <div ref="paragraph" className={`${this.props._className} Paragraph`}>
@@ -67,7 +64,10 @@ export default class Paragraph extends _Section {
 }
 
 Paragraph.propTypes = {
-  children: React.PropTypes.object,
+  children: React.PropTypes.oneOfType([
+    React.PropTypes.element,
+    React.PropTypes.array,
+  ]),
   className: React.PropTypes.string,
   title: React.PropTypes.string,
   openned: React.PropTypes.bool,
